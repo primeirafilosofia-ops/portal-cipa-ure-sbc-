@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal CIPA · URE São Bernardo do Campo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue-900:#0B3D66;
+  --blue-700:#145489;
+  --blue-600:#1C6BA8;
+  --green-600:#1B8A5A;
+  --green-500:#2CA868;
+  --amber-500:#E8A33D;
+  --bg:#F4F7FA;
+  --surface:#FFFFFF;
+  --ink:#1A2733;
+  --ink-soft:#55677A;
+  --border:#E1E8EF;
+  --radius:14px;
+  --shadow:0 2px 10px rgba(11,61,102,0.06), 0 1px 2px rgba(11,61,102,0.04);
+  --sp-black:#101010;
+  --sp-red:#C8102E;
+  --sp-white:#FFFFFF;
+  --masthead-h:40px;
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;margin:0;}
+.mono{font-family:'JetBrains Mono',monospace;}
+button{font-family:inherit;cursor:pointer;}
+a{color:inherit;}
+
+/* ---------- ASSINATURA INSTITUCIONAL (masthead / rodapé) ---------- */
+.masthead{
+  height:var(--masthead-h);background:var(--sp-black);color:#fff;position:sticky;top:0;z-index:40;
+  display:flex;align-items:center;justify-content:center;gap:10px;padding:0 20px;border-bottom:3px solid var(--sp-red);
+}
+.masthead-mark{width:16px;height:12px;border-radius:2px;overflow:hidden;flex-shrink:0;display:flex;}
+.masthead-mark span{flex:1;}
+.masthead-mark .m1{background:var(--sp-black);}
+.masthead-mark .m2{background:var(--sp-red);}
+.masthead-mark .m3{background:var(--sp-white);}
+.masthead-text{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#EDEDED;font-weight:600;white-space:nowrap;}
+
+.site-footer{
+  background:var(--sp-black);color:#C7C7C7;border-top:3px solid var(--sp-red);
+  padding:22px 40px;font-size:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+}
+.site-footer b{color:#fff;}
+.site-footer .foot-tag{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:#8A8A8A;}
+
+/* ---------- LAYOUT ---------- */
+.app{display:flex;min-height:calc(100vh - var(--masthead-h));}
+
+.sidebar{
+  width:264px;flex-shrink:0;background:linear-gradient(180deg,var(--blue-900) 0%, #0A2E4D 100%);
+  color:#fff;display:flex;flex-direction:column;position:sticky;top:var(--masthead-h);height:calc(100vh - var(--masthead-h));z-index:20;
+  transition:transform .25s ease;
+}
+.brand{display:flex;align-items:center;gap:12px;padding:22px 20px 18px;border-bottom:1px solid rgba(255,255,255,0.12);}
+.brand-mark{width:40px;height:40px;flex-shrink:0;}
+.brand-text h1{font-size:15px;line-height:1.25;color:#fff;}
+.brand-text span{font-size:11px;color:#9FC1DE;letter-spacing:.04em;text-transform:uppercase;}
+
+.nav{padding:14px 12px;display:flex;flex-direction:column;gap:2px;flex:1;overflow-y:auto;}
+.nav-item{
+  display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;
+  color:#CFE1F0;background:transparent;border:none;text-align:left;font-size:14px;font-weight:500;
+  transition:background .15s ease, color .15s ease;
+}
+.nav-item svg{width:19px;height:19px;flex-shrink:0;opacity:.85;}
+.nav-item:hover{background:rgba(255,255,255,0.08);color:#fff;}
+.nav-item.active{background:var(--green-600);color:#fff;}
+.nav-item.active svg{opacity:1;}
+
+.sidebar-foot{padding:16px 20px;border-top:1px solid rgba(255,255,255,0.12);font-size:12px;color:#8FB2CE;}
+
+.menu-toggle{display:none;position:fixed;top:calc(var(--masthead-h) + 12px);left:16px;z-index:30;background:var(--blue-900);color:#fff;border:none;width:42px;height:42px;border-radius:10px;box-shadow:var(--shadow);align-items:center;justify-content:center;}
+.menu-toggle svg{width:20px;height:20px;}
+
+.main{flex:1;min-width:0;padding:32px 40px 60px;max-width:1240px;}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px;}
+.topbar h2{font-size:24px;color:var(--blue-900);}
+.breadcrumb{font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;}
+
+.section{display:none;}
+.section.active{display:block;animation:fadeIn .3s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+/* ---------- COMPONENTES ---------- */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;padding:4px 10px;border-radius:999px;letter-spacing:.03em;text-transform:uppercase;}
+.pill-green{background:#E7F5EC;color:var(--green-600);}
+.pill-blue{background:#E7F0F9;color:var(--blue-700);}
+.pill-amber{background:#FCF1DE;color:#B4740F;}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:13.5px;font-weight:600;border:none;transition:filter .15s ease;}
+.btn:hover{filter:brightness(1.06);}
+.btn-primary{background:var(--blue-900);color:#fff;}
+.btn-green{background:var(--green-600);color:#fff;}
+.btn-outline{background:transparent;color:var(--blue-900);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--blue-700);}
+.btn-sm{padding:7px 12px;font-size:12.5px;}
+.btn svg{width:15px;height:15px;}
+
+/* HOME / HERO */
+.hero{
+  position:relative;overflow:hidden;border-radius:20px;padding:44px 40px;color:#fff;
+  background:radial-gradient(1100px 400px at 90% -20%, rgba(44,168,104,.35), transparent 60%), linear-gradient(120deg,var(--blue-900), #0E4C7E 60%, var(--blue-700));
+  margin-bottom:28px;
+}
+.hero-shield{position:absolute;right:-30px;top:-30px;width:280px;height:280px;opacity:.14;}
+.hero h1{font-size:32px;max-width:620px;line-height:1.2;}
+.hero p{max-width:560px;color:#DCEAF5;font-size:14.5px;margin-top:12px;line-height:1.6;}
+.hero-stats{display:flex;gap:28px;margin-top:26px;flex-wrap:wrap;}
+.hero-stat b{display:block;font-family:'Space Grotesk',sans-serif;font-size:26px;}
+.hero-stat span{font-size:11.5px;color:#B9D4E8;text-transform:uppercase;letter-spacing:.05em;}
+
+.grid{display:grid;gap:18px;}
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+.grid-4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));}
+.info-card{padding:20px;}
+.info-card .icon-wrap{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
+.info-card .icon-wrap svg{width:22px;height:22px;}
+.icon-blue{background:#E7F0F9;color:var(--blue-700);}
+.icon-green{background:#E7F5EC;color:var(--green-600);}
+.icon-amber{background:#FCF1DE;color:#B4740F;}
+.info-card h4{font-size:15px;margin-bottom:6px;}
+.info-card p{font-size:13px;color:var(--ink-soft);line-height:1.5;margin:0;}
+
+/* MODULOS */
+.module-card{padding:20px;display:flex;flex-direction:column;gap:12px;}
+.module-top{display:flex;align-items:flex-start;gap:14px;}
+.module-num{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:var(--green-600);background:#E7F5EC;padding:5px 9px;border-radius:8px;flex-shrink:0;}
+.module-top h4{font-size:15.5px;margin-bottom:4px;}
+.module-top p{font-size:12.5px;color:var(--ink-soft);margin:0;line-height:1.45;}
+.progress-ring-wrap{margin-left:auto;position:relative;width:44px;height:44px;flex-shrink:0;}
+.progress-ring-wrap svg{transform:rotate(-90deg);}
+.progress-ring-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;color:var(--blue-900);}
+.module-actions{display:flex;gap:8px;flex-wrap:wrap;}
+.module-materials{display:none;border-top:1px solid var(--border);margin-top:4px;padding-top:12px;}
+.module-materials.open{display:block;}
+.material-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border:1px solid var(--border);border-radius:9px;margin-bottom:8px;font-size:13px;}
+.material-item svg{width:17px;height:17px;flex-shrink:0;color:var(--blue-700);}
+.material-item .name{flex:1;font-weight:500;}
+.material-embed{margin-top:8px;}
+.material-embed iframe, .material-embed video{width:100%;border-radius:10px;border:1px solid var(--border);}
+.add-form{display:grid;gap:9px;margin-top:10px;grid-template-columns:1fr 1fr;}
+.add-form input, .add-form select{grid-column:span 1;padding:9px 11px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;}
+.add-form .full{grid-column:1/-1;}
+.empty-hint{font-size:12.5px;color:var(--ink-soft);font-style:italic;padding:6px 2px;}
+
+/* BIBLIOTECA */
+.doc-row{display:flex;align-items:center;gap:14px;padding:14px 16px;border-bottom:1px solid var(--border);}
+.doc-row:last-child{border-bottom:none;}
+.doc-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.doc-icon svg{width:18px;height:18px;}
+.doc-title{font-size:13.5px;font-weight:600;}
+.doc-meta{font-size:11.5px;color:var(--ink-soft);margin-top:2px;}
+.filters{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+.filter-btn{padding:7px 14px;border-radius:999px;border:1.5px solid var(--border);background:#fff;font-size:12.5px;font-weight:600;color:var(--ink-soft);}
+.filter-btn.active{background:var(--blue-900);color:#fff;border-color:var(--blue-900);}
+
+/* LEGISLACAO */
+.law-card{padding:18px 20px;}
+.law-card h4{font-size:14.5px;margin-bottom:6px;color:var(--blue-900);}
+.law-card p{font-size:13px;color:var(--ink-soft);line-height:1.55;margin:0;}
+.law-tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green-600);font-weight:600;}
+
+/* PLANO DE ACAO */
+.table-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+th{text-align:left;padding:11px 14px;background:#F0F4F8;color:var(--ink-soft);font-size:11px;text-transform:uppercase;letter-spacing:.04em;font-weight:700;}
+td{padding:12px 14px;border-bottom:1px solid var(--border);}
+tr:last-child td{border-bottom:none;}
+.status-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:6px;}
+.status-pendente{background:var(--amber-500);}
+.status-andamento{background:var(--blue-600);}
+.status-concluido{background:var(--green-600);}
+
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px;}
+.section-head h3{font-size:19px;color:var(--blue-900);}
+.section-sub{font-size:13px;color:var(--ink-soft);margin-top:4px;}
+
+.toast{position:fixed;bottom:24px;right:24px;background:var(--blue-900);color:#fff;padding:12px 18px;border-radius:10px;font-size:13px;box-shadow:var(--shadow);z-index:100;transform:translateY(120%);transition:transform .25s ease;}
+.toast.show{transform:none;}
+
+::-webkit-scrollbar{width:8px;}
+::-webkit-scrollbar-thumb{background:rgba(11,61,102,0.2);border-radius:8px;}
+
+@media(max-width:900px){
+  .sidebar{position:fixed;left:0;top:var(--masthead-h);height:calc(100vh - var(--masthead-h));transform:translateX(-100%);}
+  .sidebar.open{transform:translateX(0);}
+  .menu-toggle{display:flex;}
+  .main{padding:80px 18px 60px;}
+  .hero{padding:30px 22px;}
+  .hero h1{font-size:24px;}
+  .masthead-text{font-size:10.5px;}
+  .site-footer{padding:18px 20px;font-size:11px;}
+}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-mark"><span class="m1"></span><span class="m2"></span><span class="m3"></span></div>
+  <div class="masthead-text">Portal em Atualização</div>
+</div>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 48 48" fill="none">
+        <path d="M24 4 L42 11 V22 C42 33 34.5 41 24 44 C13.5 41 6 33 6 22 V11 Z" fill="url(#gShield)"/>
+        <path d="M17 24 L22 29 L32 18" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M24 4 L42 11 V22 C42 33 34.5 41 24 44 C13.5 41 6 33 6 22 V11 Z" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+        <defs><linearGradient id="gShield" x1="6" y1="4" x2="42" y2="44"><stop offset="0" stop-color="#1C6BA8"/><stop offset="1" stop-color="#1B8A5A"/></linearGradient></defs>
+      </svg>
+      <div class="brand-text">
+        <h1>Portal CIPA</h1>
+        <span id="brandUre">URE São Bernardo do Campo</span>
+      </div>
+    </div>
+    <nav class="nav" id="navList"></nav>
+    <div class="sidebar-foot" id="sidebarFoot">SEDUC-SP · Comissão Interna de Prevenção de Acidentes e Assédio</div>
+  </aside>
+
+  <main class="main">
+
+    <!-- INÍCIO -->
+    <section class="section" data-section="inicio">
+      <div class="hero">
+        <svg class="hero-shield" viewBox="0 0 48 48" fill="none"><path d="M24 4 L42 11 V22 C42 33 34.5 41 24 44 C13.5 41 6 33 6 22 V11 Z" fill="#fff"/></svg>
+        <span class="pill pill-green" style="background:rgba(255,255,255,.15);color:#fff;">CIPA · Gestão 2026</span>
+        <h1 style="margin-top:14px;">Segurança, saúde e educação em um só lugar para toda a rede da URE SBC</h1>
+        <p>Portal de formação e apoio da Comissão Interna de Prevenção de Acidentes e Assédio da URE São Bernardo do Campo. Módulos de capacitação, biblioteca técnica, legislação aplicável e planos de ação das unidades escolares reunidos em um único ambiente.</p>
+        <p id="heroMunicipios" style="margin-top:6px;font-size:12.5px;color:#B9D4E8;"></p>
+        <div class="hero-stats">
+          <div class="hero-stat"><b id="statModulos">10</b><span>Módulos de formação</span></div>
+          <div class="hero-stat"><b id="statDocs">0</b><span>Documentos na biblioteca</span></div>
+          <div class="hero-stat"><b id="statPlanos">0</b><span>Planos de ação registrados</span></div>
+        </div>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card info-card">
+          <div class="icon-wrap icon-blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 21 6v6c0 5-3.8 9-9 10-5.2-1-9-5-9-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h4>O que é a CIPA</h4>
+          <p>Comissão paritária, formada por representantes da direção e dos trabalhadores, responsável por identificar riscos e propor medidas de prevenção de acidentes e adoecimento no ambiente escolar.</p>
+        </div>
+        <div class="card info-card">
+          <div class="icon-wrap icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <h4>Formação continuada</h4>
+          <p>10 módulos com conteúdo em PDF e vídeo, organizados por tema, para capacitar servidores e membros da CIPA nas unidades escolares da regional.</p>
+        </div>
+        <div class="card info-card">
+          <div class="icon-wrap icon-amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg>
+          </div>
+          <h4>Plano de ação por unidade</h4>
+          <p>Cada unidade escolar registra e acompanha suas próprias ações de prevenção, com responsável, prazo e status de execução.</p>
+        </div>
+      </div>
+
+      <div class="card" style="padding:26px 28px;margin-top:22px;">
+        <div class="section-head" style="margin-bottom:16px;">
+          <div>
+            <h3>Sobre a CIPA</h3>
+            <p class="section-sub">Comissão Interna de Prevenção de Acidentes e Assédio da URE São Bernardo do Campo.</p>
+          </div>
+        </div>
+
+        <h4 style="font-size:14.5px;color:var(--blue-900);margin-bottom:8px;">O que é a CIPA</h4>
+        <p style="font-size:13.5px;color:var(--ink-soft);line-height:1.6;max-width:820px;">
+          A CIPA (Comissão Interna de Prevenção de Acidentes e Assédio) é uma comissão paritária — formada por
+          representantes da direção e representantes dos trabalhadores em número igual — instituída pela
+          NR-5. Sua finalidade é observar e relatar as condições de risco nos ambientes de trabalho, solicitar
+          medidas para reduzi-los e até eliminá-los, além de discutir e promover a prevenção de acidentes e do
+          adoecimento relacionado ao trabalho, incluindo o assédio moral e sexual (Lei 14.457/2022).
+        </p>
+
+        <h4 style="font-size:14.5px;color:var(--blue-900);margin:22px 0 10px;">Objetivos</h4>
+        <div class="grid grid-4">
+          <div class="info-card" style="padding:0;">
+            <p style="font-size:13px;color:var(--ink-soft);line-height:1.5;">Identificar e mapear riscos ocupacionais nas unidades escolares.</p>
+          </div>
+          <div class="info-card" style="padding:0;">
+            <p style="font-size:13px;color:var(--ink-soft);line-height:1.5;">Elaborar e acompanhar planos de ação de prevenção, com prazos e responsáveis.</p>
+          </div>
+          <div class="info-card" style="padding:0;">
+            <p style="font-size:13px;color:var(--ink-soft);line-height:1.5;">Participar do Gerenciamento de Riscos Ocupacionais (GRO) e do PGR, conforme a NR-1.</p>
+          </div>
+          <div class="info-card" style="padding:0;">
+            <p style="font-size:13px;color:var(--ink-soft);line-height:1.5;">Promover a Semana Interna de Prevenção de Acidentes de Trabalho (SIPAT).</p>
+          </div>
+          <div class="info-card" style="padding:0;">
+            <p style="font-size:13px;color:var(--ink-soft);line-height:1.5;">Acompanhar a investigação de acidentes e ocorrências de trabalho.</p>
+          </div>
+          <div class="info-card" style="padding:0;">
+            <p style="font-size:13px;color:var(--ink-soft);line-height:1.5;">Atuar na prevenção e no acolhimento de casos de assédio moral e sexual.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;margin:26px 0 10px;flex-wrap:wrap;gap:10px;">
+          <div>
+            <h4 style="font-size:14.5px;color:var(--blue-900);">Composição — Cipeiros</h4>
+            <p class="section-sub" style="margin-top:2px;">Representantes titulares e suplentes, do empregador e dos trabalhadores.</p>
+          </div>
+          <button class="btn btn-green btn-sm" id="btnNovoCipeiro">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            Adicionar cipeiro
+          </button>
+        </div>
+
+        <div class="card table-wrap" style="box-shadow:none;">
+          <table>
+            <thead><tr><th>Nome</th><th>Função</th><th>Representação</th><th></th></tr></thead>
+            <tbody id="cipeirosTbody"></tbody>
+          </table>
+        </div>
+
+        <div class="card" id="cipeiroFormCard" style="display:none;padding:18px;margin-top:14px;">
+          <h4 style="font-size:14px;margin-bottom:10px;">Novo cipeiro</h4>
+          <div class="add-form">
+            <input type="text" id="cipeiroNome" placeholder="Nome completo" class="full">
+            <select id="cipeiroFuncao">
+              <option>Presidente</option>
+              <option>Vice-presidente</option>
+              <option>Secretário(a)</option>
+              <option>Representante Titular</option>
+              <option>Representante Suplente</option>
+            </select>
+            <select id="cipeiroRepresentacao">
+              <option value="empregador">Representante do Empregador</option>
+              <option value="empregados">Representante dos Empregados</option>
+            </select>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:12px;">
+            <button class="btn btn-primary btn-sm" id="salvarCipeiro">Salvar cipeiro</button>
+            <button class="btn btn-outline btn-sm" id="cancelarCipeiro">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULOS -->
+    <section class="section" data-section="modulos">
+      <div class="section-head">
+        <div>
+          <h3>Módulos de Formação</h3>
+          <p class="section-sub">10 módulos de capacitação em segurança e saúde ocupacional. Adicione PDFs e vídeos em cada módulo.</p>
+        </div>
+      </div>
+      <div class="grid grid-3" id="modulosGrid"></div>
+    </section>
+
+    <!-- BIBLIOTECA -->
+    <section class="section" data-section="biblioteca">
+      <div class="section-head">
+        <div>
+          <h3>Biblioteca de Documentos</h3>
+          <p class="section-sub">Materiais de apoio gerais da CIPA, disponíveis para todas as unidades escolares.</p>
+        </div>
+        <button class="btn btn-green btn-sm" id="btnNovoDoc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          Adicionar documento
+        </button>
+      </div>
+
+      <div class="filters" id="docFilters"></div>
+
+      <div class="card" id="docListWrap" style="margin-bottom:16px;">
+        <div id="docList"></div>
+      </div>
+
+      <div class="card" id="docFormCard" style="display:none;padding:18px;">
+        <h4 style="font-size:14px;margin-bottom:10px;">Novo documento</h4>
+        <div class="add-form">
+          <input type="text" id="docTitulo" placeholder="Título do documento" class="full">
+          <select id="docTipo">
+            <option value="pdf">PDF</option>
+            <option value="video">Vídeo</option>
+          </select>
+          <select id="docCategoria">
+            <option>Segurança do Trabalho</option>
+            <option>Saúde Ocupacional</option>
+            <option>Ergonomia</option>
+            <option>Emergência e Evacuação</option>
+            <option>Assédio e Convivência</option>
+            <option>Outros</option>
+          </select>
+          <input type="url" id="docUrl" placeholder="Link do arquivo (Google Drive, YouTube, etc.)" class="full">
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px;">
+          <button class="btn btn-primary btn-sm" id="salvarDoc">Salvar documento</button>
+          <button class="btn btn-outline btn-sm" id="cancelarDoc">Cancelar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEGISLACAO -->
+    <section class="section" data-section="legislacao">
+      <div class="section-head">
+        <div>
+          <h3>Legislação Aplicável</h3>
+          <p class="section-sub">Principais normas que fundamentam a atuação da CIPA. Consulte sempre o texto oficial vigente.</p>
+        </div>
+      </div>
+      <div class="grid grid-3" id="legislacaoGrid"></div>
+    </section>
+
+    <!-- PLANO DE ACAO -->
+    <section class="section" data-section="planos">
+      <div class="section-head">
+        <div>
+          <h3>Plano de Ação das Unidades Escolares</h3>
+          <p class="section-sub">Registro e acompanhamento das ações de prevenção por unidade escolar.</p>
+        </div>
+        <button class="btn btn-green btn-sm" id="btnNovoPlano">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          Novo registro
+        </button>
+      </div>
+
+      <div class="card" id="planoFormCard" style="display:none;padding:18px;margin-bottom:16px;">
+        <h4 style="font-size:14px;margin-bottom:10px;">Novo plano de ação</h4>
+        <div class="add-form">
+          <select id="planoMunicipio" class="full"></select>
+          <input type="text" id="planoUnidade" placeholder="Unidade escolar" class="full">
+          <input type="text" id="planoResponsavel" placeholder="Responsável">
+          <input type="date" id="planoPrazo">
+          <input type="text" id="planoAcao" placeholder="Ação de prevenção" class="full">
+          <select id="planoStatus">
+            <option value="pendente">Pendente</option>
+            <option value="andamento">Em andamento</option>
+            <option value="concluido">Concluído</option>
+          </select>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px;">
+          <button class="btn btn-primary btn-sm" id="salvarPlano">Salvar registro</button>
+          <button class="btn btn-outline btn-sm" id="cancelarPlano">Cancelar</button>
+        </div>
+      </div>
+
+      <div class="filters" id="planoFiltros"></div>
+
+      <div class="card table-wrap">
+        <table>
+          <thead><tr><th>Município</th><th>Unidade</th><th>Ação</th><th>Responsável</th><th>Prazo</th><th>Status</th><th></th></tr></thead>
+          <tbody id="planoTbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div><b id="footUre">URE SBC</b> em desenvolvimento</div>
+  <div class="foot-tag">Comissão Interna de Prevenção de Acidentes e Assédio – CIPA</div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------------- CONFIGURAÇÃO DA UNIDADE REGIONAL ----------------
+   Ponto único de customização. Para replicar este portal em outra
+   Unidade Regional de Ensino, basta editar os valores abaixo — o
+   restante do código (sidebar, formulários, storage) se adapta
+   automaticamente. */
+const CONFIG = {
+  ureNome: 'URE São Bernardo do Campo',
+  ureSigla: 'URE SBC',
+  municipios: ['São Bernardo do Campo', 'São Caetano do Sul'],
+  storagePrefix: 'cipa-uresbc', // isola os dados desta URE de outras réplicas do portal
+};
+
+/* ---------------- ÍCONES ---------------- */
+const ICONS = {
+  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>',
+  modules:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>',
+  library:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+  law:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7l-3 6a3.5 3.5 0 0 0 6 0zM19 7l-3 6a3.5 3.5 0 0 0 6 0z"/><path d="M3 21h18M5 7h14M12 3l7 4M12 3 5 7"/></svg>',
+  plan:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg>',
+  pdf:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>',
+  video:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="M16 10l6-3v10l-6-3z"/></svg>',
+  plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>',
+  trash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>',
+};
+
+const NAV = [
+  {id:'inicio', label:'Início', icon:'home'},
+  {id:'modulos', label:'Módulos de Formação', icon:'modules'},
+  {id:'biblioteca', label:'Biblioteca de Documentos', icon:'library'},
+  {id:'legislacao', label:'Legislação', icon:'law'},
+  {id:'planos', label:'Plano de Ação das Unidades', icon:'plan'},
+];
+
+const navList = document.getElementById('navList');
+NAV.forEach(item=>{
+  const b = document.createElement('button');
+  b.className = 'nav-item';
+  b.dataset.target = item.id;
+  b.innerHTML = ICONS[item.icon] + '<span>'+item.label+'</span>';
+  b.onclick = ()=>goTo(item.id);
+  navList.appendChild(b);
+});
+
+function goTo(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active', s.dataset.section===id));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.toggle('active', n.dataset.target===id));
+  document.getElementById('sidebar').classList.remove('open');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+goTo('inicio');
+
+document.getElementById('menuToggle').onclick = ()=>document.getElementById('sidebar').classList.toggle('open');
+
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2400);
+}
+
+/* ---------------- STORAGE HELPERS ----------------
+   Dados institucionais (biblioteca, módulos, planos de ação) usam
+   window.storage com shared=true: visíveis para todas as pessoas que
+   abrirem este portal dentro do ambiente Claude. Ao publicar este
+   arquivo em um host estático (ex.: GitHub Pages), substitua estas
+   funções por chamadas a um backend real ou por localStorage local,
+   já que window.storage só existe no ambiente de artifacts da Claude. */
+async function storageGet(key, fallback){
+  try{
+    const r = await window.storage.get(key, true);
+    return r ? JSON.parse(r.value) : fallback;
+  }catch(e){ return fallback; }
+}
+async function storageSet(key, value){
+  try{ await window.storage.set(key, JSON.stringify(value), true); }
+  catch(e){ console.error('Falha ao salvar', key, e); }
+}
+
+/* ---------------- MÓDULOS ---------------- */
+const MODULOS_BASE = [
+  {n:1, titulo:'Introdução à CIPA e à Prevenção de Acidentes', desc:'Papel da comissão, composição paritária e ciclo de gestão.'},
+  {n:2, titulo:'Legislação Trabalhista Aplicada à Escola', desc:'CLT, Normas Regulamentadoras e responsabilidades do servidor público.'},
+  {n:3, titulo:'Identificação e Análise de Riscos', desc:'Mapa de riscos, inspeções de segurança e registro de ocorrências.'},
+  {n:4, titulo:'Ergonomia no Ambiente Escolar', desc:'Postura, mobiliário e organização do trabalho docente e administrativo.'},
+  {n:5, titulo:'Uso de Equipamentos de Proteção', desc:'Seleção, uso correto e conservação de EPIs nas atividades escolares.'},
+  {n:6, titulo:'Primeiros Socorros e Emergências', desc:'Procedimentos básicos de atendimento e acionamento de serviços de emergência.'},
+  {n:7, titulo:'Prevenção e Combate a Incêndio', desc:'Rotas de fuga, sinalização, extintores e simulados de evacuação.'},
+  {n:8, titulo:'Saúde Mental e Qualidade de Vida no Trabalho', desc:'Sinais de sobrecarga, apoio institucional e cultura de cuidado.'},
+  {n:9, titulo:'Prevenção ao Assédio Moral e Sexual', desc:'Identificação, acolhimento e canais formais de denúncia.'},
+  {n:10, titulo:'Elaboração do Plano de Ação da Unidade', desc:'Diagnóstico local, metas de prevenção e acompanhamento de resultados.'},
+];
+
+let MODULOS_DATA = {}; // { n: {materiais:[]} }
+
+function progressRing(pct){
+  const r=18, c=2*Math.PI*r;
+  const off = c - (pct/100)*c;
+  return `<div class="progress-ring-wrap">
+    <svg width="44" height="44"><circle cx="22" cy="22" r="${r}" stroke="#E1E8EF" stroke-width="4" fill="none"/>
+    <circle cx="22" cy="22" r="${r}" stroke="#1B8A5A" stroke-width="4" fill="none" stroke-dasharray="${c}" stroke-dashoffset="${off}" stroke-linecap="round"/></svg>
+    <div class="progress-ring-label">${pct}%</div></div>`;
+}
+
+function embedFor(mat){
+  if(mat.tipo==='video'){
+    const yt = mat.url.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{6,})/);
+    if(yt) return `<div class="material-embed"><iframe src="https://www.youtube.com/embed/${yt[1]}" height="220" allowfullscreen></iframe></div>`;
+    return `<div class="material-embed"><video src="${mat.url}" controls height="220"></video></div>`;
+  }
+  return `<div class="material-embed"><iframe src="${mat.url}" height="260"></iframe></div>`;
+}
+
+async function renderModulos(){
+  const grid = document.getElementById('modulosGrid');
+  grid.innerHTML = '';
+  for(const m of MODULOS_BASE){
+    const data = MODULOS_DATA[m.n] || {materiais:[]};
+    const pct = data.materiais.length ? Math.min(100, data.materiais.length*34) : 0;
+    const card = document.createElement('div');
+    card.className = 'card module-card';
+    card.innerHTML = `
+      <div class="module-top">
+        <span class="module-num mono">M${String(m.n).padStart(2,'0')}</span>
+        <div>
+          <h4>${m.titulo}</h4>
+          <p>${m.desc}</p>
+        </div>
+        ${progressRing(pct)}
+      </div>
+      <div class="module-actions">
+        <button class="btn btn-outline btn-sm toggle-mat" data-n="${m.n}">Ver materiais (${data.materiais.length})</button>
+        <button class="btn btn-green btn-sm add-mat" data-n="${m.n}">${ICONS.plus} Adicionar</button>
+      </div>
+      <div class="module-materials" id="mat-${m.n}">
+        <div id="matList-${m.n}"></div>
+        <div class="add-form" id="matForm-${m.n}" style="display:none;">
+          <input type="text" placeholder="Título do material" class="full mat-titulo" data-n="${m.n}">
+          <select class="mat-tipo" data-n="${m.n}">
+            <option value="pdf">PDF</option>
+            <option value="video">Vídeo</option>
+          </select>
+          <input type="url" placeholder="Link (PDF, YouTube, etc.)" class="mat-url" data-n="${m.n}">
+          <button class="btn btn-primary btn-sm full salvar-mat" data-n="${m.n}">Salvar material</button>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  }
+
+  grid.querySelectorAll('.toggle-mat').forEach(b=>b.onclick = ()=>{
+    const n = b.dataset.n;
+    const wrap = document.getElementById('mat-'+n);
+    wrap.classList.toggle('open');
+    renderMaterialList(n);
+  });
+  grid.querySelectorAll('.add-mat').forEach(b=>b.onclick = ()=>{
+    const n = b.dataset.n;
+    document.getElementById('mat-'+n).classList.add('open');
+    document.getElementById('matForm-'+n).style.display = 'grid';
+    renderMaterialList(n);
+  });
+  grid.querySelectorAll('.salvar-mat').forEach(b=>b.onclick = async ()=>{
+    const n = b.dataset.n;
+    const titulo = document.querySelector(`.mat-titulo[data-n="${n}"]`).value.trim();
+    const tipo = document.querySelector(`.mat-tipo[data-n="${n}"]`).value;
+    const url = document.querySelector(`.mat-url[data-n="${n}"]`).value.trim();
+    if(!titulo || !url){ toast('Preencha título e link.'); return; }
+    if(!MODULOS_DATA[n]) MODULOS_DATA[n] = {materiais:[]};
+    MODULOS_DATA[n].materiais.push({titulo, tipo, url, id:Date.now()});
+    await storageSet(CONFIG.storagePrefix+':modulos', MODULOS_DATA);
+    toast('Material adicionado ao módulo.');
+    renderModulos();
+  });
+
+  document.getElementById('statModulos').textContent = MODULOS_BASE.length;
+}
+
+function renderMaterialList(n){
+  const data = MODULOS_DATA[n] || {materiais:[]};
+  const el = document.getElementById('matList-'+n);
+  if(!el) return;
+  if(!data.materiais.length){
+    el.innerHTML = '<p class="empty-hint">Nenhum material cadastrado ainda neste módulo.</p>';
+    return;
+  }
+  el.innerHTML = data.materiais.map(mat=>`
+    <div class="material-item">
+      ${ICONS[mat.tipo]}
+      <span class="name">${mat.titulo}</span>
+      <span class="pill ${mat.tipo==='pdf'?'pill-blue':'pill-green'}">${mat.tipo==='pdf'?'PDF':'Vídeo'}</span>
+    </div>
+    ${embedFor(mat)}
+  `).join('');
+}
+
+/* ---------------- COMPOSIÇÃO DA CIPA (CIPEIROS) ---------------- */
+let CIPEIROS = [];
+const REPRESENTACAO_LABEL = {empregador:'Empregador', empregados:'Empregados'};
+
+function renderCipeiros(){
+  const tbody = document.getElementById('cipeirosTbody');
+  if(!CIPEIROS.length){
+    tbody.innerHTML = '<tr><td colspan="4" class="empty-hint" style="padding:16px;">Nenhum cipeiro cadastrado ainda.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = CIPEIROS.map(c=>`
+    <tr>
+      <td>${c.nome}</td>
+      <td>${c.funcao}</td>
+      <td><span class="pill ${c.representacao==='empregador'?'pill-blue':'pill-green'}">${REPRESENTACAO_LABEL[c.representacao]}</span></td>
+      <td><button class="btn btn-sm" style="background:#FBEAEA;color:#B4453C;" onclick="removerCipeiro(${c.id})">${ICONS.trash}</button></td>
+    </tr>
+  `).join('');
+}
+
+async function removerCipeiro(id){
+  CIPEIROS = CIPEIROS.filter(c=>c.id!==id);
+  await storageSet(CONFIG.storagePrefix+':cipeiros', CIPEIROS);
+  renderCipeiros();
+  toast('Cipeiro removido.');
+}
+
+document.getElementById('btnNovoCipeiro').onclick = ()=>{
+  document.getElementById('cipeiroFormCard').style.display='block';
+};
+document.getElementById('cancelarCipeiro').onclick = ()=>{
+  document.getElementById('cipeiroFormCard').style.display='none';
+};
+document.getElementById('salvarCipeiro').onclick = async ()=>{
+  const nome = document.getElementById('cipeiroNome').value.trim();
+  const funcao = document.getElementById('cipeiroFuncao').value;
+  const representacao = document.getElementById('cipeiroRepresentacao').value;
+  if(!nome){ toast('Preencha o nome do cipeiro.'); return; }
+  CIPEIROS.push({id:Date.now(), nome, funcao, representacao});
+  await storageSet(CONFIG.storagePrefix+':cipeiros', CIPEIROS);
+  document.getElementById('cipeiroNome').value='';
+  document.getElementById('cipeiroFormCard').style.display='none';
+  renderCipeiros();
+  toast('Cipeiro adicionado à composição.');
+};
+
+/* ---------------- BIBLIOTECA DE DOCUMENTOS ---------------- */
+let DOCS = [];
+const CATEGORIAS = ['Todos','Segurança do Trabalho','Saúde Ocupacional','Ergonomia','Emergência e Evacuação','Assédio e Convivência','Outros'];
+let filtroAtual = 'Todos';
+
+function renderFiltros(){
+  const wrap = document.getElementById('docFilters');
+  wrap.innerHTML = '';
+  CATEGORIAS.forEach(cat=>{
+    const b = document.createElement('button');
+    b.className = 'filter-btn' + (cat===filtroAtual ? ' active':'');
+    b.textContent = cat;
+    b.onclick = ()=>{ filtroAtual = cat; renderFiltros(); renderDocs(); };
+    wrap.appendChild(b);
+  });
+}
+
+function renderDocs(){
+  const list = document.getElementById('docList');
+  const filtrados = filtroAtual==='Todos' ? DOCS : DOCS.filter(d=>d.categoria===filtroAtual);
+  if(!filtrados.length){
+    list.innerHTML = '<p class="empty-hint" style="padding:18px;">Nenhum documento cadastrado nesta categoria ainda.</p>';
+  }else{
+    list.innerHTML = filtrados.map(d=>`
+      <div class="doc-row">
+        <div class="doc-icon ${d.tipo==='pdf'?'icon-blue':'icon-green'}">${ICONS[d.tipo]}</div>
+        <div style="flex:1;min-width:0;">
+          <div class="doc-title">${d.titulo}</div>
+          <div class="doc-meta">${d.categoria}</div>
+        </div>
+        <a class="btn btn-outline btn-sm" href="${d.url}" target="_blank" rel="noopener">Abrir</a>
+        <button class="btn btn-sm" style="background:#FBEAEA;color:#B4453C;" onclick="removerDoc(${d.id})">${ICONS.trash}</button>
+      </div>
+    `).join('');
+  }
+  document.getElementById('statDocs').textContent = DOCS.length;
+}
+
+async function removerDoc(id){
+  DOCS = DOCS.filter(d=>d.id!==id);
+  await storageSet(CONFIG.storagePrefix+':biblioteca', DOCS);
+  renderDocs();
+  toast('Documento removido.');
+}
+
+document.getElementById('btnNovoDoc').onclick = ()=>{
+  document.getElementById('docFormCard').style.display='block';
+};
+document.getElementById('cancelarDoc').onclick = ()=>{
+  document.getElementById('docFormCard').style.display='none';
+};
+document.getElementById('salvarDoc').onclick = async ()=>{
+  const titulo = document.getElementById('docTitulo').value.trim();
+  const tipo = document.getElementById('docTipo').value;
+  const categoria = document.getElementById('docCategoria').value;
+  const url = document.getElementById('docUrl').value.trim();
+  if(!titulo || !url){ toast('Preencha título e link do documento.'); return; }
+  DOCS.push({id:Date.now(), titulo, tipo, categoria, url});
+  await storageSet(CONFIG.storagePrefix+':biblioteca', DOCS);
+  document.getElementById('docTitulo').value='';
+  document.getElementById('docUrl').value='';
+  document.getElementById('docFormCard').style.display='none';
+  renderDocs();
+  toast('Documento adicionado à biblioteca.');
+};
+
+/* ---------------- LEGISLAÇÃO ---------------- */
+const LEGISLACAO = [
+  {tag:'NR-1', titulo:'Disposições Gerais e Gerenciamento de Riscos Ocupacionais', texto:'Norma-base do sistema de SST: define o Gerenciamento de Riscos Ocupacionais (GRO) e o Programa de Gerenciamento de Riscos (PGR), com participação obrigatória da CIPA na identificação e no acompanhamento dos riscos — incluindo, desde maio de 2026, os riscos psicossociais (sobrecarga, assédio, pressão excessiva).'},
+  {tag:'NR-5', titulo:'Comissão Interna de Prevenção de Acidentes e Assédio', texto:'Define a obrigatoriedade, composição paritária, atribuições e funcionamento da CIPA nas organizações, incluindo o mapeamento de riscos e a promoção de ações preventivas.'},
+  {tag:'NR-6', titulo:'Equipamento de Proteção Individual', texto:'Estabelece critérios para fornecimento, uso, guarda e conservação de EPIs adequados às atividades exercidas em cada função.'},
+  {tag:'NR-9', titulo:'Avaliação e Controle das Exposições Ocupacionais', texto:'Trata da identificação de agentes físicos, químicos e biológicos e das medidas de controle a serem adotadas pelo empregador.'},
+  {tag:'NR-17', titulo:'Ergonomia', texto:'Orienta a adaptação das condições de trabalho às características do trabalhador, abrangendo mobiliário, ritmo e organização das tarefas.'},
+  {tag:'CLT Art. 163–165', titulo:'Consolidação das Leis do Trabalho', texto:'Base legal que institui a CIPA nas empresas e órgãos, define sua finalidade preventiva e assegura estabilidade aos representantes eleitos.'},
+  {tag:'Lei 14.457/2022', titulo:'Programa Emprega + Mulheres', texto:'Amplia as atribuições da CIPA para incluir a prevenção e o combate ao assédio sexual e outras formas de violência no ambiente de trabalho.'},
+];
+
+function renderLegislacao(){
+  const grid = document.getElementById('legislacaoGrid');
+  grid.innerHTML = LEGISLACAO.map(l=>`
+    <div class="card law-card">
+      <span class="law-tag mono">${l.tag}</span>
+      <h4 style="margin-top:6px;">${l.titulo}</h4>
+      <p>${l.texto}</p>
+    </div>
+  `).join('');
+}
+
+/* ---------------- PLANO DE AÇÃO ---------------- */
+let PLANOS = [];
+let filtroMunicipio = 'Todos';
+
+const STATUS_LABEL = {pendente:'Pendente', andamento:'Em andamento', concluido:'Concluído'};
+
+function renderFiltrosMunicipio(){
+  const wrap = document.getElementById('planoFiltros');
+  const opcoes = ['Todos', ...CONFIG.municipios];
+  wrap.innerHTML = '';
+  opcoes.forEach(m=>{
+    const b = document.createElement('button');
+    b.className = 'filter-btn' + (m===filtroMunicipio ? ' active':'');
+    b.textContent = m;
+    b.onclick = ()=>{ filtroMunicipio = m; renderFiltrosMunicipio(); renderPlanos(); };
+    wrap.appendChild(b);
+  });
+}
+
+function renderPlanos(){
+  const tbody = document.getElementById('planoTbody');
+  const filtrados = filtroMunicipio==='Todos' ? PLANOS : PLANOS.filter(p=>p.municipio===filtroMunicipio);
+  if(!filtrados.length){
+    tbody.innerHTML = '<tr><td colspan="7" class="empty-hint" style="padding:18px;">Nenhum plano de ação registrado ainda.</td></tr>';
+  }else{
+    tbody.innerHTML = filtrados.map(p=>`
+      <tr>
+        <td>${p.municipio||'—'}</td>
+        <td>${p.unidade}</td>
+        <td>${p.acao}</td>
+        <td>${p.responsavel||'—'}</td>
+        <td>${p.prazo ? new Date(p.prazo+'T00:00:00').toLocaleDateString('pt-BR') : '—'}</td>
+        <td><span class="status-dot status-${p.status}"></span>${STATUS_LABEL[p.status]}</td>
+        <td><button class="btn btn-sm" style="background:#FBEAEA;color:#B4453C;" onclick="removerPlano(${p.id})">${ICONS.trash}</button></td>
+      </tr>
+    `).join('');
+  }
+  document.getElementById('statPlanos').textContent = PLANOS.length;
+}
+
+async function removerPlano(id){
+  PLANOS = PLANOS.filter(p=>p.id!==id);
+  await storageSet(CONFIG.storagePrefix+':planos', PLANOS);
+  renderPlanos();
+  toast('Registro removido.');
+}
+
+document.getElementById('btnNovoPlano').onclick = ()=>{
+  document.getElementById('planoFormCard').style.display='block';
+};
+document.getElementById('cancelarPlano').onclick = ()=>{
+  document.getElementById('planoFormCard').style.display='none';
+};
+document.getElementById('salvarPlano').onclick = async ()=>{
+  const municipio = document.getElementById('planoMunicipio').value;
+  const unidade = document.getElementById('planoUnidade').value.trim();
+  const responsavel = document.getElementById('planoResponsavel').value.trim();
+  const prazo = document.getElementById('planoPrazo').value;
+  const acao = document.getElementById('planoAcao').value.trim();
+  const status = document.getElementById('planoStatus').value;
+  if(!unidade || !acao){ toast('Preencha ao menos a unidade e a ação.'); return; }
+  PLANOS.push({id:Date.now(), municipio, unidade, responsavel, prazo, acao, status});
+  await storageSet(CONFIG.storagePrefix+':planos', PLANOS);
+  ['planoUnidade','planoResponsavel','planoPrazo','planoAcao'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('planoFormCard').style.display='none';
+  renderPlanos();
+  toast('Plano de ação registrado.');
+};
+
+/* ---------------- INICIALIZAÇÃO ---------------- */
+function aplicarConfig(){
+  document.getElementById('brandUre').textContent = CONFIG.ureNome;
+  document.getElementById('sidebarFoot').textContent = 'SEDUC-SP · Comissão Interna de Prevenção de Acidentes e Assédio';
+  document.getElementById('footUre').textContent = CONFIG.ureSigla;
+  document.getElementById('heroMunicipios').textContent = 'Atende as unidades escolares de: ' + CONFIG.municipios.join(' e ') + '.';
+
+  const selMunicipio = document.getElementById('planoMunicipio');
+  selMunicipio.innerHTML = CONFIG.municipios.map(m=>`<option value="${m}">${m}</option>`).join('');
+}
+
+(async function init(){
+  aplicarConfig();
+  MODULOS_DATA = await storageGet(CONFIG.storagePrefix+':modulos', {});
+  DOCS = await storageGet(CONFIG.storagePrefix+':biblioteca', []);
+  PLANOS = await storageGet(CONFIG.storagePrefix+':planos', []);
+  CIPEIROS = await storageGet(CONFIG.storagePrefix+':cipeiros', []);
+  renderModulos();
+  renderFiltros();
+  renderDocs();
+  renderLegislacao();
+  renderFiltrosMunicipio();
+  renderPlanos();
+  renderCipeiros();
+})();
+</script>
+</body>
+</html>
