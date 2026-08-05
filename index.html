@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -191,6 +192,47 @@ tr:last-child td{border-bottom:none;}
 ::-webkit-scrollbar{width:8px;}
 ::-webkit-scrollbar-thumb{background:rgba(11,61,102,0.2);border-radius:8px;}
 
+
+/* ---------- EVOLUÇÃO FORMATIVA ---------- */
+.module-summary{border-top:1px solid var(--border);padding-top:12px;margin-top:2px;}
+.module-summary h5{font-family:'Space Grotesk',sans-serif;font-size:12.5px;color:var(--blue-900);margin:0 0 7px;}
+.module-summary ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:12px;line-height:1.55;}
+.module-summary li{margin-bottom:3px;}
+.cycle-card{padding:20px;position:relative;overflow:hidden;}
+.cycle-step{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green-600);font-weight:700;margin-bottom:8px;}
+.concept-card{padding:18px;border-top:4px solid var(--blue-700);}
+.concept-card:nth-child(2n){border-top-color:var(--green-600);}
+.concept-card h4{font-size:17px;color:var(--blue-900);margin-bottom:6px;}
+.concept-card p{font-size:12.5px;color:var(--ink-soft);line-height:1.5;margin:0;}
+.didactic-box{padding:26px 28px;margin-top:22px;}
+.didactic-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:16px;}
+.didactic-item{padding:14px;border:1px solid var(--border);border-radius:11px;background:#F9FBFD;}
+.didactic-item b{display:block;font-size:13px;color:var(--blue-900);margin-bottom:4px;}
+.didactic-item span{font-size:12px;color:var(--ink-soft);line-height:1.45;}
+.norm-card{padding:24px;}
+.norm-card h4{font-size:18px;color:var(--blue-900);margin:8px 0 12px;}
+.norm-card ul{padding-left:18px;margin:0;color:var(--ink-soft);font-size:13px;line-height:1.65;}
+.norm-card li{margin-bottom:7px;}
+.norm-note{margin-top:18px;padding:14px 16px;border-left:4px solid var(--amber-500);background:#FFF8EC;border-radius:8px;font-size:12.5px;color:#765217;line-height:1.5;}
+.quiz-wrap{max-width:850px;}
+.quiz-intro{padding:22px;margin-bottom:18px;}
+.quiz-question{padding:20px;margin-bottom:14px;}
+.quiz-question h4{font-size:14.5px;color:var(--blue-900);margin-bottom:12px;}
+.quiz-option{display:flex;align-items:flex-start;gap:9px;padding:10px 12px;border:1px solid var(--border);border-radius:9px;margin-bottom:8px;font-size:13px;cursor:pointer;}
+.quiz-option:hover{background:#F5F9FC;}
+.quiz-option input{margin-top:2px;}
+.quiz-result{display:none;padding:24px;margin-top:18px;}
+.quiz-result.show{display:block;}
+.score-big{font-family:'Space Grotesk',sans-serif;font-size:36px;color:var(--blue-900);font-weight:700;}
+.cert-form{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:16px;}
+.cert-form input{padding:11px 12px;border:1.5px solid var(--border);border-radius:9px;font-family:inherit;}
+.parity-summary{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0;}
+.parity-chip{padding:8px 12px;border-radius:9px;background:#F0F4F8;font-size:12px;color:var(--ink-soft);}
+.parity-chip b{color:var(--blue-900);}
+.source-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+.source-links a{text-decoration:none;}
+@media(max-width:600px){.cert-form{grid-template-columns:1fr}.didactic-box{padding:20px}.norm-card{padding:20px}}
+
 @media(max-width:900px){
   .sidebar{position:fixed;left:0;top:var(--masthead-h);height:calc(100vh - var(--masthead-h));transform:translateX(-100%);}
   .sidebar.open{transform:translateX(0);}
@@ -201,13 +243,25 @@ tr:last-child td{border-bottom:none;}
   .masthead-text{font-size:10.5px;}
   .site-footer{padding:18px 20px;font-size:11px;}
 }
+
+/* ===== PROGRAMA DE FORMAÇÃO CONTINUADA / APOSTILAS DIGITAIS ===== */
+.program-banner{margin-bottom:22px;padding:20px 22px;border-left:5px solid var(--green-600);background:linear-gradient(135deg,#fff,#eef7f2);}
+.program-banner h3{font-size:18px;color:var(--blue-900);margin-bottom:5px}.program-banner p{font-size:13px;color:var(--ink-soft);line-height:1.6;margin:0;max-width:900px}
+.module-summary{border-top:1px solid var(--border);padding-top:12px}.module-summary h5{margin:0 0 7px;color:var(--blue-900);font-size:12px;text-transform:uppercase;letter-spacing:.04em}.module-summary ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:12px;line-height:1.55}.module-summary li{margin:2px 0}
+.training-modal{display:none;position:fixed;inset:0;background:rgba(7,25,41,.72);z-index:200;padding:20px;overflow:auto}.training-modal.open{display:block}.training-shell{background:#fff;max-width:980px;margin:0 auto;border-radius:18px;box-shadow:0 25px 70px rgba(0,0,0,.28);overflow:hidden}.training-toolbar{position:sticky;top:0;z-index:5;display:flex;gap:8px;justify-content:flex-end;align-items:center;padding:12px 18px;background:#fff;border-bottom:1px solid var(--border)}
+.training-cover{padding:54px 54px 44px;background:linear-gradient(135deg,var(--blue-900),#0e527f 62%,var(--green-600));color:#fff;position:relative;overflow:hidden}.training-cover:after{content:'';position:absolute;width:260px;height:260px;border:42px solid rgba(255,255,255,.08);border-radius:50%;right:-80px;top:-70px}.training-kicker{font-size:12px;text-transform:uppercase;letter-spacing:.13em;font-weight:700;color:#c7e4d5}.training-cover h1{font-size:32px;line-height:1.16;max-width:760px;margin:15px 0 12px}.training-cover p{max-width:720px;line-height:1.6;color:#dceaf5;font-size:14px}.training-cover .volume{display:inline-block;margin-top:24px;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:7px 12px;font-size:12px}
+.training-body{padding:38px 54px 56px}.training-disclaimer{padding:15px 17px;background:#fff8e8;border-left:4px solid var(--amber-500);border-radius:9px;color:#67542e;font-size:12.5px;line-height:1.55;margin-bottom:28px}.training-objectives{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:15px 0 30px}.objective-card{padding:15px;border:1px solid var(--border);border-radius:12px;background:#f8fafc;font-size:13px;line-height:1.5}.training-section{margin:31px 0}.training-section h2{font-size:21px;color:var(--blue-900);padding-bottom:8px;border-bottom:2px solid #e8eef4}.training-section h3{font-size:16px;color:var(--blue-700);margin:20px 0 8px}.training-section p,.training-section li{font-size:14px;line-height:1.72;color:#34475a}.training-section ul,.training-section ol{padding-left:22px}.training-callout{padding:16px 18px;border-radius:12px;margin:18px 0;background:#edf6fb;border-left:4px solid var(--blue-600)}.training-callout.green{background:#edf8f2;border-left-color:var(--green-600)}.training-callout.amber{background:#fff8e8;border-left-color:var(--amber-500)}.training-callout b{color:var(--blue-900)}
+.checklist{list-style:none!important;padding:0!important}.checklist li{padding:9px 10px 9px 38px;border-bottom:1px solid var(--border);position:relative}.checklist li:before{content:'☐';position:absolute;left:10px;color:var(--green-600);font-size:18px;top:6px}.training-questions{counter-reset:q;list-style:none!important;padding:0!important}.training-questions li{counter-increment:q;padding:11px 12px 11px 48px;background:#f7f9fb;border-radius:10px;margin:8px 0;position:relative}.training-questions li:before{content:counter(q);position:absolute;left:12px;top:9px;width:24px;height:24px;border-radius:50%;background:var(--blue-900);color:#fff;display:grid;place-items:center;font-size:11px;font-weight:700}.training-ref{font-size:12.5px!important;color:var(--ink-soft)!important}.training-footer-note{margin-top:42px;padding-top:16px;border-top:1px solid var(--border);font-size:11.5px;color:var(--ink-soft);line-height:1.55}
+@media(max-width:700px){.training-modal{padding:0}.training-shell{border-radius:0}.training-cover,.training-body{padding:30px 22px}.training-cover h1{font-size:25px}.training-toolbar{justify-content:center;flex-wrap:wrap}}
+@media print{body.printing-module>*:not(#trainingModal){display:none!important}body.printing-module #trainingModal{display:block!important;position:static!important;background:#fff!important;padding:0!important;overflow:visible!important}body.printing-module .training-shell{box-shadow:none!important;max-width:none!important;border-radius:0!important}body.printing-module .training-toolbar{display:none!important}body.printing-module .training-cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}body.printing-module .training-body{padding:30px 42px}.training-section{break-inside:avoid-page}.training-cover{min-height:260px}.training-callout,.objective-card{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
 </style>
 </head>
 <body>
 
 <div class="masthead">
   <div class="masthead-mark"><span class="m1"></span><span class="m2"></span><span class="m3"></span></div>
-  <div class="masthead-text">Portal em Atualização</div>
+  <div class="masthead-text">Portal de Apoio à CIPA · Formação e Prevenção</div>
 </div>
 
 <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
@@ -229,7 +283,7 @@ tr:last-child td{border-bottom:none;}
       </div>
     </div>
     <nav class="nav" id="navList"></nav>
-    <div class="sidebar-foot" id="sidebarFoot">SEDUC-SP · Comissão Interna de Prevenção de Acidentes e Assédio</div>
+    <div class="sidebar-foot" id="sidebarFoot">SEDUC-SP · Comissão Interna de Prevenção de Acidentes e de Assédio</div>
   </aside>
 
   <main class="main">
@@ -240,10 +294,10 @@ tr:last-child td{border-bottom:none;}
         <svg class="hero-shield" viewBox="0 0 48 48" fill="none"><path d="M24 4 L42 11 V22 C42 33 34.5 41 24 44 C13.5 41 6 33 6 22 V11 Z" fill="#fff"/></svg>
         <span class="pill pill-green" style="background:rgba(255,255,255,.15);color:#fff;">CIPA · Gestão 2026</span>
         <h1 style="margin-top:14px;">Segurança, saúde e educação em um só lugar para toda a rede da URE SBC</h1>
-        <p>Portal de formação e apoio da Comissão Interna de Prevenção de Acidentes e Assédio da URE São Bernardo do Campo. Módulos de capacitação, biblioteca técnica, legislação aplicável e planos de ação das unidades escolares reunidos em um único ambiente.</p>
+        <p>Programa independente de formação continuada e apoio da Comissão Interna de Prevenção de Acidentes e de Assédio da URE São Bernardo do Campo. Módulos de capacitação, biblioteca técnica, legislação aplicável e planos de ação das unidades escolares reunidos em um único ambiente.</p>
         <p id="heroMunicipios" style="margin-top:6px;font-size:12.5px;color:#B9D4E8;"></p>
         <div class="hero-stats">
-          <div class="hero-stat"><b id="statModulos">10</b><span>Módulos de formação</span></div>
+          <div class="hero-stat"><b id="statModulos">12</b><span>Módulos de formação</span></div>
           <div class="hero-stat"><b id="statDocs">0</b><span>Documentos na biblioteca</span></div>
           <div class="hero-stat"><b id="statPlanos">0</b><span>Planos de ação registrados</span></div>
         </div>
@@ -262,7 +316,7 @@ tr:last-child td{border-bottom:none;}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
           </div>
           <h4>Formação continuada</h4>
-          <p>10 módulos com conteúdo em PDF e vídeo, organizados por tema, para capacitar servidores e membros da CIPA nas unidades escolares da regional.</p>
+          <p>12 módulos com conteúdo programático, materiais em PDF e vídeo, organizados por tema, para capacitar servidores e membros da CIPA nas unidades escolares da regional.</p>
         </div>
         <div class="card info-card">
           <div class="icon-wrap icon-amber">
@@ -273,17 +327,57 @@ tr:last-child td{border-bottom:none;}
         </div>
       </div>
 
+      <div class="section-head" style="margin-top:28px;">
+        <div>
+          <h3>Painel de Conceitos Essenciais</h3>
+          <p class="section-sub">Referências rápidas para orientar a formação e as reuniões da CIPA.</p>
+        </div>
+      </div>
+      <div class="grid grid-4">
+        <div class="card concept-card"><h4>NR-1</h4><p>Disposições gerais e Gerenciamento de Riscos Ocupacionais.</p></div>
+        <div class="card concept-card"><h4>NR-5</h4><p>Organização, atribuições e funcionamento da CIPA.</p></div>
+        <div class="card concept-card"><h4>GRO</h4><p>Processo contínuo de identificação, avaliação e controle dos riscos ocupacionais.</p></div>
+        <div class="card concept-card"><h4>PGR</h4><p>Inventário de riscos e plano de ação que documentam o gerenciamento preventivo.</p></div>
+        <div class="card concept-card"><h4>SIPAT</h4><p>Semana voltada à conscientização e à prevenção de acidentes e adoecimentos.</p></div>
+      </div>
+
+      <div class="section-head" style="margin-top:28px;">
+        <div>
+          <h3>Ciclo de Gestão da CIPA</h3>
+          <p class="section-sub">Uma rotina simples para transformar diagnóstico em melhoria contínua.</p>
+        </div>
+      </div>
+      <div class="grid grid-4">
+        <div class="card cycle-card"><div class="cycle-step">01 · PLANEJAR</div><h4>Planejar</h4><p>Identificar prioridades, definir responsáveis, recursos, prazos e resultados esperados.</p></div>
+        <div class="card cycle-card"><div class="cycle-step">02 · EXECUTAR</div><h4>Executar</h4><p>Realizar inspeções, orientações, ações formativas e medidas preventivas previstas.</p></div>
+        <div class="card cycle-card"><div class="cycle-step">03 · MONITORAR</div><h4>Monitorar</h4><p>Acompanhar evidências, prazos, ocorrências, participação e andamento das ações.</p></div>
+        <div class="card cycle-card"><div class="cycle-step">04 · AVALIAR</div><h4>Avaliar</h4><p>Verificar resultados, registrar aprendizados e revisar o plano para o próximo ciclo.</p></div>
+      </div>
+
+      <div class="card didactic-box">
+        <div class="section-head" style="margin-bottom:10px;">
+          <div><h3>Por que a CIPA existe?</h3><p class="section-sub">A comissão fortalece uma cultura permanente de cuidado e participação.</p></div>
+        </div>
+        <div class="didactic-list">
+          <div class="didactic-item"><b>Prevenir acidentes</b><span>Identificar perigos e apoiar medidas que reduzam a possibilidade de ocorrências.</span></div>
+          <div class="didactic-item"><b>Promover saúde</b><span>Contribuir para ambientes e formas de trabalho mais seguros e saudáveis.</span></div>
+          <div class="didactic-item"><b>Ampliar a participação</b><span>Ouvir os trabalhadores e incorporar sua experiência à prevenção.</span></div>
+          <div class="didactic-item"><b>Prevenir o assédio</b><span>Apoiar ações educativas e institucionais de prevenção às violências no trabalho.</span></div>
+          <div class="didactic-item"><b>Melhorar o ambiente escolar</b><span>Transformar diagnósticos em ações acompanhadas e aperfeiçoadas continuamente.</span></div>
+        </div>
+      </div>
+
       <div class="card" style="padding:26px 28px;margin-top:22px;">
         <div class="section-head" style="margin-bottom:16px;">
           <div>
             <h3>Sobre a CIPA</h3>
-            <p class="section-sub">Comissão Interna de Prevenção de Acidentes e Assédio da URE São Bernardo do Campo.</p>
+            <p class="section-sub">Comissão Interna de Prevenção de Acidentes e de Assédio da URE São Bernardo do Campo.</p>
           </div>
         </div>
 
         <h4 style="font-size:14.5px;color:var(--blue-900);margin-bottom:8px;">O que é a CIPA</h4>
         <p style="font-size:13.5px;color:var(--ink-soft);line-height:1.6;max-width:820px;">
-          A CIPA (Comissão Interna de Prevenção de Acidentes e Assédio) é uma comissão paritária — formada por
+          A CIPA (Comissão Interna de Prevenção de Acidentes e de Assédio) é uma comissão paritária — formada por
           representantes da direção e representantes dos trabalhadores em número igual — instituída pela
           NR-5. Sua finalidade é observar e relatar as condições de risco nos ambientes de trabalho, solicitar
           medidas para reduzi-los e até eliminá-los, além de discutir e promover a prevenção de acidentes e do
@@ -323,6 +417,12 @@ tr:last-child td{border-bottom:none;}
           </button>
         </div>
 
+        <div class="parity-summary" id="paritySummary">
+          <div class="parity-chip">Representantes do Empregador: <b id="parityEmp">0</b></div>
+          <div class="parity-chip">Representantes dos Trabalhadores: <b id="parityTrab">0</b></div>
+          <div class="parity-chip">Situação cadastral: <b id="parityStatus">Aguardando cadastro</b></div>
+        </div>
+
         <div class="card table-wrap" style="box-shadow:none;">
           <table>
             <thead><tr><th>Nome</th><th>Função</th><th>Representação</th><th></th></tr></thead>
@@ -359,9 +459,10 @@ tr:last-child td{border-bottom:none;}
       <div class="section-head">
         <div>
           <h3>Módulos de Formação</h3>
-          <p class="section-sub">10 módulos de capacitação em segurança e saúde ocupacional. Adicione PDFs e vídeos em cada módulo.</p>
+          <p class="section-sub">12 módulos de capacitação em segurança, saúde ocupacional e prevenção do assédio. Adicione PDFs e vídeos em cada módulo.</p>
         </div>
       </div>
+      <div class="card program-banner"><h3>Programa de Formação Continuada — CIPA URE São Bernardo do Campo</h3><p>Coleção de apoio técnico e educativo para estudos, reuniões e ações preventivas. Produção independente da CIPA URE-SBC, sem caráter de curso oficial da Secretaria da Educação. Cada módulo pode ser lido na tela ou salvo como PDF.</p></div>
       <div class="grid grid-3" id="modulosGrid"></div>
     </section>
 
@@ -398,6 +499,11 @@ tr:last-child td{border-bottom:none;}
             <option>Ergonomia</option>
             <option>Emergência e Evacuação</option>
             <option>Assédio e Convivência</option>
+            <option>NR-1</option>
+            <option>NR-5</option>
+            <option>GRO</option>
+            <option>PGR</option>
+            <option>SIPAT</option>
             <option>Outros</option>
           </select>
           <input type="url" id="docUrl" placeholder="Link do arquivo (Google Drive, YouTube, etc.)" class="full">
@@ -418,6 +524,41 @@ tr:last-child td{border-bottom:none;}
         </div>
       </div>
       <div class="grid grid-3" id="legislacaoGrid"></div>
+    </section>
+
+    <!-- NR-1 E NR-5 COMENTADAS -->
+    <section class="section" data-section="normas">
+      <div class="section-head"><div><h3>NR-1 e NR-5 Comentadas</h3><p class="section-sub">Síntese didática para formação. Consulte sempre o texto oficial vigente.</p></div></div>
+      <div class="grid grid-3">
+        <div class="card norm-card">
+          <span class="pill pill-blue">NR-1</span><h4>Gerenciamento de Riscos Ocupacionais</h4>
+          <ul><li><b>Objetivo:</b> estabelecer disposições gerais e diretrizes de SST.</li><li><b>Campo de aplicação:</b> observar o alcance definido na própria norma e no regime jurídico aplicável.</li><li><b>GRO:</b> processo contínuo de prevenção e gerenciamento dos riscos ocupacionais.</li><li><b>PGR:</b> reúne inventário de riscos e plano de ação.</li><li><b>Perigos e riscos:</b> devem ser identificados, avaliados, classificados e acompanhados.</li><li><b>Controles:</b> priorizar eliminação, redução e medidas coletivas antes das individuais.</li><li><b>Participação:</b> trabalhadores devem ser consultados e informados sobre os riscos e medidas.</li><li><b>Atualização 2026:</b> o GRO inclui fatores de riscos psicossociais relacionados ao trabalho.</li></ul>
+        </div>
+        <div class="card norm-card">
+          <span class="pill pill-green">NR-5</span><h4>Organização e Atuação da CIPA</h4>
+          <ul><li><b>Conceito:</b> comissão voltada à prevenção de acidentes, doenças relacionadas ao trabalho e assédio.</li><li><b>Constituição:</b> observar o dimensionamento e as regras aplicáveis à organização.</li><li><b>Representação:</b> participação de representantes da organização e dos empregados.</li><li><b>Processo eleitoral:</b> deve garantir transparência e participação.</li><li><b>Treinamento:</b> prepara os membros para reconhecer riscos e atuar preventivamente.</li><li><b>Reuniões:</b> devem gerar registros, encaminhamentos e acompanhamento.</li><li><b>SIPAT:</b> ação educativa de prevenção e promoção da saúde.</li><li><b>Prevenção:</b> inclui inspeções, análise de ocorrências e proposição de medidas.</li></ul>
+        </div>
+        <div class="card norm-card">
+          <span class="pill pill-amber">INTEGRAÇÃO</span><h4>NR-1 + NR-5</h4>
+          <ul><li><b>Papel estratégico:</b> a CIPA aproxima a gestão de riscos da realidade do trabalho.</li><li><b>Apoio ao GRO:</b> contribui na percepção de perigos, escuta e acompanhamento.</li><li><b>Apoio ao PGR:</b> pode subsidiar inventário, plano de ação e monitoramento.</li><li><b>Mapa de riscos:</b> recurso participativo de comunicação e priorização.</li><li><b>Participação:</b> servidores e trabalhadores trazem conhecimento sobre as atividades reais.</li><li><b>Melhoria contínua:</b> reuniões e planos devem alimentar novos ciclos de avaliação.</li></ul>
+        </div>
+      </div>
+      <div class="norm-note"><b>Nota:</b> este conteúdo é um apoio didático e não substitui o texto oficial, a análise técnica de SST ou a orientação jurídica e administrativa aplicável à URE e às unidades escolares.</div>
+      <div class="source-links"><a class="btn btn-outline btn-sm" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-1" target="_blank" rel="noopener">Texto oficial da NR-1</a><a class="btn btn-outline btn-sm" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-5-nr-5" target="_blank" rel="noopener">Texto oficial da NR-5</a></div>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="section" data-section="quiz">
+      <div class="section-head"><div><h3>Quiz da CIPA</h3><p class="section-sub">Avaliação formativa com questões de múltipla escolha e explicações pedagógicas.</p></div></div>
+      <div class="quiz-wrap">
+        <div class="card quiz-intro"><p style="margin:0;color:var(--ink-soft);font-size:13px;line-height:1.6;">Responda todas as questões. O aproveitamento mínimo para liberar o certificado de conclusão da formação introdutória é de 70%.</p></div>
+        <form id="quizForm"></form>
+        <button class="btn btn-green" id="corrigirQuiz" type="button">Calcular aproveitamento</button>
+        <div class="card quiz-result" id="quizResult">
+          <div class="score-big" id="quizScore">0%</div><h3 id="quizStatus" style="margin-top:6px;"></h3><p id="quizFeedback" style="color:var(--ink-soft);font-size:13px;line-height:1.55;"></p>
+          <div id="certArea" style="display:none;"><div class="cert-form"><input type="text" id="certNome" placeholder="Nome completo do participante"><button class="btn btn-primary" id="emitirCertificado" type="button">Emitir Certificado</button></div><p class="section-sub">O certificado será aberto em formato próprio para impressão. No navegador, selecione “Salvar como PDF”.</p></div>
+        </div>
+      </div>
     </section>
 
     <!-- PLANO DE ACAO -->
@@ -466,9 +607,22 @@ tr:last-child td{border-bottom:none;}
   </main>
 </div>
 
+
+<div class="training-modal" id="trainingModal" aria-hidden="true">
+  <article class="training-shell" id="trainingPrintArea">
+    <div class="training-toolbar">
+      <button class="btn btn-outline btn-sm" id="trainingPrev" type="button">← Módulo anterior</button>
+      <button class="btn btn-outline btn-sm" id="trainingNext" type="button">Próximo módulo →</button>
+      <button class="btn btn-primary btn-sm" id="trainingPrint" type="button">Imprimir / Salvar PDF</button>
+      <button class="btn btn-outline btn-sm" id="trainingClose" type="button">Fechar</button>
+    </div>
+    <div id="trainingContent"></div>
+  </article>
+</div>
+
 <footer class="site-footer">
   <div><b id="footUre">URE SBC</b> em desenvolvimento</div>
-  <div class="foot-tag">Comissão Interna de Prevenção de Acidentes e Assédio – CIPA</div>
+  <div class="foot-tag">Comissão Interna de Prevenção de Acidentes e de Assédio – CIPA</div>
 </footer>
 
 <div class="toast" id="toast"></div>
@@ -504,6 +658,8 @@ const NAV = [
   {id:'modulos', label:'Módulos de Formação', icon:'modules'},
   {id:'biblioteca', label:'Biblioteca de Documentos', icon:'library'},
   {id:'legislacao', label:'Legislação', icon:'law'},
+  {id:'normas', label:'NR-1 e NR-5 Comentadas', icon:'law'},
+  {id:'quiz', label:'Quiz da CIPA', icon:'modules'},
   {id:'planos', label:'Plano de Ação das Unidades', icon:'plan'},
 ];
 
@@ -535,36 +691,60 @@ function toast(msg){
 }
 
 /* ---------------- STORAGE HELPERS ----------------
-   Dados institucionais (biblioteca, módulos, planos de ação) usam
-   window.storage com shared=true: visíveis para todas as pessoas que
-   abrirem este portal dentro do ambiente Claude. Ao publicar este
-   arquivo em um host estático (ex.: GitHub Pages), substitua estas
-   funções por chamadas a um backend real ou por localStorage local,
-   já que window.storage só existe no ambiente de artifacts da Claude. */
+   GitHub Pages não possui banco de dados. Os registros são preservados
+   no navegador de cada dispositivo por meio do localStorage. */
 async function storageGet(key, fallback){
   try{
-    const r = await window.storage.get(key, true);
-    return r ? JSON.parse(r.value) : fallback;
-  }catch(e){ return fallback; }
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  }catch(e){
+    console.warn('Não foi possível ler o armazenamento local:', key, e);
+    return fallback;
+  }
 }
 async function storageSet(key, value){
-  try{ await window.storage.set(key, JSON.stringify(value), true); }
-  catch(e){ console.error('Falha ao salvar', key, e); }
+  try{
+    localStorage.setItem(key, JSON.stringify(value));
+    return true;
+  }catch(e){
+    console.error('Falha ao salvar', key, e);
+    toast('Não foi possível salvar neste navegador. Verifique as permissões.');
+    return false;
+  }
 }
 
 /* ---------------- MÓDULOS ---------------- */
 const MODULOS_BASE = [
-  {n:1, titulo:'Introdução à CIPA e à Prevenção de Acidentes', desc:'Papel da comissão, composição paritária e ciclo de gestão.'},
-  {n:2, titulo:'Legislação Trabalhista Aplicada à Escola', desc:'CLT, Normas Regulamentadoras e responsabilidades do servidor público.'},
-  {n:3, titulo:'Identificação e Análise de Riscos', desc:'Mapa de riscos, inspeções de segurança e registro de ocorrências.'},
-  {n:4, titulo:'Ergonomia no Ambiente Escolar', desc:'Postura, mobiliário e organização do trabalho docente e administrativo.'},
-  {n:5, titulo:'Uso de Equipamentos de Proteção', desc:'Seleção, uso correto e conservação de EPIs nas atividades escolares.'},
-  {n:6, titulo:'Primeiros Socorros e Emergências', desc:'Procedimentos básicos de atendimento e acionamento de serviços de emergência.'},
-  {n:7, titulo:'Prevenção e Combate a Incêndio', desc:'Rotas de fuga, sinalização, extintores e simulados de evacuação.'},
-  {n:8, titulo:'Saúde Mental e Qualidade de Vida no Trabalho', desc:'Sinais de sobrecarga, apoio institucional e cultura de cuidado.'},
-  {n:9, titulo:'Prevenção ao Assédio Moral e Sexual', desc:'Identificação, acolhimento e canais formais de denúncia.'},
-  {n:10, titulo:'Elaboração do Plano de Ação da Unidade', desc:'Diagnóstico local, metas de prevenção e acompanhamento de resultados.'},
+  {n:1,titulo:'Introdução à CIPA e à Prevenção de Acidentes e de Assédio',desc:'Conceitos fundamentais, papel da comissão, representação e ciclo de gestão.'},
+  {n:2,titulo:'NR-1 e Gerenciamento de Riscos Ocupacionais (GRO)',desc:'Direitos e deveres, identificação de perigos, avaliação de riscos e PGR.'},
+  {n:3,titulo:'NR-5 e Funcionamento da CIPA',desc:'Constituição, atribuições, processo eleitoral, reuniões e treinamento.'},
+  {n:4,titulo:'Legislação Trabalhista Aplicada à Escola',desc:'CLT, Normas Regulamentadoras e responsabilidades institucionais.'},
+  {n:5,titulo:'Identificação e Análise de Riscos',desc:'Mapa de riscos, inspeções de segurança e registro de ocorrências.'},
+  {n:6,titulo:'Ergonomia no Ambiente Escolar',desc:'Postura, mobiliário e organização do trabalho.'},
+  {n:7,titulo:'Uso de Equipamentos de Proteção',desc:'EPIs e EPCs aplicados ao ambiente escolar.'},
+  {n:8,titulo:'Primeiros Socorros e Emergências',desc:'Procedimentos básicos de atendimento e acionamento de apoio.'},
+  {n:9,titulo:'Prevenção e Combate a Incêndios',desc:'Rotas de fuga, extintores, sinalização e evacuação.'},
+  {n:10,titulo:'Fatores de Riscos Psicossociais, Saúde Mental e Qualidade de Vida',desc:'Organização do trabalho, prevenção do adoecimento e cultura de cuidado.'},
+  {n:11,titulo:'Prevenção ao Assédio Moral e Sexual',desc:'Lei 14.457/2022, ações preventivas, acolhimento e encaminhamento.'},
+  {n:12,titulo:'Plano de Ação da Unidade Escolar',desc:'Planejamento, execução, monitoramento e avaliação.'}
 ];
+
+const CONTEUDO_PROGRAMATICO = {
+  1:['O que é Segurança e Saúde no Trabalho','Conceitos de acidente e doença relacionada ao trabalho','História e finalidade da CIPA','Representação e participação','Ciclo de gestão da CIPA'],
+  2:['Objetivos e campo de aplicação da NR-1','Gerenciamento de Riscos Ocupacionais — GRO','Programa de Gerenciamento de Riscos — PGR','Identificação de perigos','Avaliação e classificação de riscos','Hierarquia e medidas de prevenção','Fatores de riscos psicossociais relacionados ao trabalho'],
+  3:['Objetivos da NR-5','Constituição e organização da CIPA','Representantes e atribuições','Processo eleitoral','Treinamento dos membros','Reuniões, registros e acompanhamento','SIPAT e ações educativas'],
+  4:['CLT e Segurança e Saúde no Trabalho','Normas Regulamentadoras aplicáveis','Responsabilidades da organização','Responsabilidades dos trabalhadores','Regime jurídico e normas administrativas aplicáveis'],
+  5:['Perigo, risco e exposição','Inspeção de segurança','Mapa de riscos e participação','Registro e análise de ocorrências','Priorização de medidas preventivas'],
+  6:['Princípios da ergonomia','Posturas e movimentos','Mobiliário e equipamentos','Organização e ritmo do trabalho','Orientações para ambientes administrativos e escolares'],
+  7:['Diferença entre EPI e EPC','Seleção adequada','Fornecimento e orientação','Uso, guarda e conservação','Limitações e medidas coletivas prioritárias'],
+  8:['Avaliação inicial da emergência','Acionamento dos serviços competentes','Proteção da vítima e do socorrista','Noções de primeiros socorros','Registro e comunicação da ocorrência'],
+  9:['Princípios de prevenção contra incêndios','Classes de incêndio e extintores','Rotas de fuga e sinalização','Plano de abandono','Simulados e pontos de encontro'],
+  10:['Fatores psicossociais relacionados ao trabalho','Organização, demandas e relações de trabalho','Escuta e participação dos trabalhadores','Medidas preventivas coletivas','Canais institucionais de apoio'],
+  11:['Conceitos de assédio moral e sexual','Ações de prevenção e sensibilização','Acolhimento responsável','Canais formais de denúncia','Sigilo, não retaliação e encaminhamento'],
+  12:['Diagnóstico da unidade','Definição de prioridades','Metas, responsáveis e prazos','Evidências e monitoramento','Avaliação de resultados e melhoria contínua']
+};
+
+const MATERIAL_FORMACAO = {"1":{"objectives":["Compreender a finalidade preventiva da CIPA.","Reconhecer a importância da participação coletiva.","Aplicar o ciclo planejar–executar–monitorar–avaliar."],"sections":[["1. Segurança e Saúde no Trabalho","Segurança e Saúde no Trabalho (SST) reúne princípios, medidas e práticas destinadas a preservar a vida, prevenir acidentes e reduzir o adoecimento relacionado ao trabalho. No ambiente escolar, a prevenção alcança salas de aula, cozinhas, pátios, oficinas, laboratórios, áreas administrativas, depósitos, acessos e relações de trabalho. A prevenção não se limita à entrega de equipamentos: ela começa pela observação organizada das atividades reais e pela eliminação ou redução das causas dos riscos."],["2. O que é a CIPA","A Comissão Interna de Prevenção de Acidentes e de Assédio atua como espaço permanente de participação, diálogo e acompanhamento das condições de trabalho. Sua contribuição central é aproximar a gestão dos riscos da experiência cotidiana das pessoas. Os membros não substituem profissionais especializados, serviços de emergência, autoridades competentes ou canais formais; eles ajudam a identificar problemas, propor medidas, acompanhar providências e fortalecer uma cultura de cuidado."],["3. Acidente, incidente e doença relacionada ao trabalho","Acidente é um evento que provoca lesão ou dano. Incidente é uma ocorrência que poderia ter causado dano, ainda que não o tenha produzido. Ambos devem ser analisados porque revelam fragilidades. Doença relacionada ao trabalho pode surgir ou se agravar em razão das condições, da organização ou das exposições existentes. A pergunta preventiva não é apenas “quem errou?”, mas “quais condições permitiram que isso acontecesse e como evitar repetição?”."],["4. Participação e representação","Uma CIPA efetiva depende de escuta, confiança e registros. A representação deve permitir que diferentes setores apresentem suas percepções. Reuniões produtivas partem de evidências: relatos, inspeções, fotografias autorizadas, registros de manutenção, ocorrências e acompanhamento de planos. Divergências devem ser tratadas com respeito, foco no risco e busca de solução."],["5. Ciclo de gestão","Planejar significa diagnosticar e priorizar. Executar é colocar as medidas em prática. Monitorar é verificar prazos, evidências e mudanças. Avaliar é comparar o resultado com o objetivo e iniciar um novo ciclo. Uma ação só pode ser considerada concluída quando existe evidência de implementação e verificação de eficácia."]],"case":"Durante o intervalo, servidores relatam que um corredor fica escorregadio após a limpeza. Já ocorreram dois quase acidentes, mas nenhum registro formal. A CIPA deve ouvir os envolvidos, registrar o perigo, verificar produto, horário, sinalização e procedimento, propor controles e acompanhar se as medidas realmente reduziram o risco.","check":["A CIPA possui calendário e pauta de reuniões?","Os setores sabem como comunicar perigos e incidentes?","As decisões geram responsáveis, prazos e evidências?","Há retorno às pessoas que fizeram relatos?","As ações concluídas têm eficácia verificada?"],"questions":["Quais riscos aparecem com maior frequência na rotina escolar?","Como estimular relatos sem criar uma cultura de culpa?","Que evidência comprova que uma ação preventiva funcionou?"],"refs":["NR-5 — Comissão Interna de Prevenção de Acidentes e de Assédio.","Lei nº 14.457/2022 — medidas de prevenção ao assédio e à violência no trabalho."]},"2":{"objectives":["Distinguir perigo, risco e exposição.","Compreender GRO e PGR.","Relacionar riscos psicossociais à organização do trabalho."],"sections":[["1. A lógica da NR-1","A NR-1 estabelece disposições gerais e diretrizes para o gerenciamento dos riscos ocupacionais. Seu enfoque é contínuo: conhecer os perigos, avaliar os riscos, implementar medidas, acompanhar resultados e revisar sempre que houver mudanças, acidentes, inadequações ou novas informações."],["2. Perigo, risco e exposição","Perigo é a fonte ou situação com potencial de causar dano. Risco combina a possibilidade de ocorrência com a gravidade das consequências, considerando a exposição. Um piso molhado é um perigo; o risco depende de circulação, tempo de permanência, visibilidade, calçado e controles existentes. Descrever bem o perigo evita planos genéricos."],["3. Gerenciamento de Riscos Ocupacionais — GRO","O GRO é o processo amplo de gestão. Ele integra identificação, avaliação, prevenção, comunicação, participação e melhoria contínua. Deve considerar atividades rotineiras e não rotineiras, mudanças, manutenção, emergências e características das pessoas expostas."],["4. Programa de Gerenciamento de Riscos — PGR","O PGR materializa o gerenciamento por documentos e ações. Em termos didáticos, dois elementos são essenciais: o inventário de riscos, que organiza perigos, grupos expostos, controles e avaliações; e o plano de ação, que define o que será feito, por quem, quando e como será acompanhado."],["5. Hierarquia de controles","A prevenção deve priorizar eliminar o perigo. Quando isso não for possível, busca-se substituição, medidas de engenharia ou proteção coletiva, medidas administrativas e, por último, proteção individual. Avisos e treinamentos são importantes, mas não substituem correções físicas e organizacionais necessárias."],["6. Fatores de riscos psicossociais","A redação vigente da NR-1 passou a explicitar fatores psicossociais relacionados ao trabalho no gerenciamento de riscos. Eles podem estar associados a demandas excessivas, falta de clareza, baixa autonomia, conflitos, violência, assédio, jornadas e apoio insuficiente. A abordagem é organizacional e preventiva, não diagnóstica: a CIPA observa condições de trabalho, preserva o sigilo e encaminha situações aos canais competentes."]],"case":"Uma equipe relata sobrecarga recorrente em períodos de fechamento, mensagens fora do horário e conflitos sobre prioridades. A resposta não deve se limitar a palestra sobre resiliência. É necessário mapear demandas, fluxos, papéis, recursos, prazos, comunicação e apoio, propondo medidas coletivas e acompanhamento.","check":["Os perigos estão descritos de forma específica?","O plano prioriza medidas coletivas?","Mudanças de rotina geram nova avaliação?","Os trabalhadores participam da identificação?","Fatores psicossociais são tratados como condições de trabalho?"],"questions":["Qual a diferença prática entre GRO e PGR?","Que controles eliminam ou reduzem o perigo na fonte?","Como abordar riscos psicossociais sem expor pessoas?"],"refs":["NR-1 — Disposições Gerais e Gerenciamento de Riscos Ocupacionais.","Manual de interpretação e aplicação do capítulo 1.5 da NR-1 — MTE, 2026."]},"3":{"objectives":["Conhecer atribuições e funcionamento da CIPA.","Compreender reuniões, registros e processo eleitoral.","Planejar ações educativas e SIPAT."],"sections":[["1. Objetivo e atuação","A NR-5 organiza a atuação da CIPA. O foco é prevenir acidentes e doenças relacionadas ao trabalho, promovendo compatibilidade entre trabalho, preservação da vida e saúde. A comissão atua por observação, participação, proposição, acompanhamento e educação preventiva."],["2. Composição e representação","A composição deve observar as regras e o dimensionamento aplicáveis. No portal, a contagem serve como apoio cadastral, não como declaração automática de regularidade. Titulares, suplentes, vacâncias, afastamentos e normas específicas precisam ser considerados."],["3. Processo eleitoral","Um processo confiável exige cronograma, divulgação, inscrições, votação, apuração, registros e guarda documental. A transparência fortalece legitimidade. Dúvidas ou irregularidades devem ser encaminhadas conforme os canais e normas competentes."],["4. Atribuições práticas","Entre as práticas esperadas estão acompanhar a identificação de perigos, registrar percepções, verificar ambientes, participar da análise de ocorrências, propor medidas, acompanhar planos, divulgar informações e colaborar com ações de prevenção ao assédio e outras formas de violência."],["5. Reuniões produtivas","Uma boa pauta combina pendências anteriores, novos riscos, ocorrências, inspeções, andamento do plano e comunicação. A ata deve registrar decisões, responsáveis e prazos, sem expor dados sensíveis. A reunião termina com encaminhamentos claros e a próxima começa pela verificação do que foi cumprido."],["6. SIPAT e formação","A SIPAT deve dialogar com os riscos reais da unidade. Em vez de atividades isoladas, pode combinar campanhas, oficinas, simulações, rodas de conversa, análise de casos e pactos de melhoria. A formação continuada mantém a comissão ativa durante todo o mandato."]],"case":"A reunião mensal dura duas horas, mas repete os mesmos assuntos. Não há lista de pendências nem responsáveis. A solução é adotar pauta prévia, quadro de ações, limite de tempo, registro objetivo e revisão sistemática dos compromissos.","check":["Existe calendário anual de reuniões?","As atas registram responsáveis e prazos?","Há controle das pendências?","A SIPAT parte do diagnóstico de riscos?","Novos membros recebem formação e documentos?"],"questions":["Como separar discussão, decisão e acompanhamento?","Quais documentos devem ser organizados pela comissão?","Como tornar a SIPAT conectada à realidade da escola?"],"refs":["NR-5 — texto oficial vigente.","CLT, arts. 163 a 165."]},"4":{"objectives":["Reconhecer as principais fontes normativas.","Distinguir apoio formativo de orientação oficial.","Compreender responsabilidades e limites de atuação."],"sections":[["1. Sistema normativo de SST","A segurança e saúde no trabalho é formada por Constituição, CLT, Normas Regulamentadoras, legislação específica, normas técnicas, atos administrativos e regras internas. No serviço público, a aplicação concreta também depende do regime jurídico, das competências administrativas e das orientações dos órgãos responsáveis."],["2. Normas Regulamentadoras","As NRs tratam de temas como gerenciamento de riscos, CIPA, EPI, ergonomia, incêndio, condições sanitárias e sinalização. Elas devem ser consultadas em sua versão oficial e vigente. Resumos facilitam o estudo, mas não substituem o texto normativo."],["3. Responsabilidades institucionais","A organização deve estruturar a prevenção, disponibilizar recursos, corrigir riscos e cumprir obrigações. Gestores devem agir dentro de suas competências, formalizar demandas e acompanhar providências. A CIPA auxilia e participa, mas não assume atribuições técnicas ou decisórias que pertencem a outros setores."],["4. Responsabilidade dos trabalhadores","Todos devem observar orientações de segurança, utilizar corretamente recursos disponibilizados, comunicar riscos e colaborar com medidas preventivas. A participação não deve ser confundida com transferência da responsabilidade da organização."],["5. Evidência e rastreabilidade","Solicitações importantes devem ser registradas. Uma boa evidência informa data, local, situação, risco percebido, providência proposta e acompanhamento. Dados pessoais e informações sensíveis exigem tratamento cuidadoso."]],"case":"A CIPA identifica infiltração próxima a um quadro elétrico. Não cabe improvisar reparo. Deve-se restringir o acesso quando necessário, comunicar formalmente o setor competente, registrar a situação e acompanhar a solução técnica.","check":["As fontes citadas são oficiais e atuais?","A comissão diferencia recomendação de decisão administrativa?","Demandas críticas são formalizadas?","Dados pessoais são protegidos?","Há consulta ao setor técnico quando necessário?"],"questions":["Qual é o limite de atuação da CIPA?","Quando uma situação exige apoio técnico especializado?","Como manter rastreabilidade sem burocracia excessiva?"],"refs":["Constituição Federal, art. 7º, XXII.","CLT, Capítulo V — Segurança e Medicina do Trabalho.","Normas Regulamentadoras vigentes — MTE."]},"5":{"objectives":["Realizar observação estruturada de riscos.","Priorizar situações por gravidade e urgência.","Converter achados em ações monitoráveis."],"sections":[["1. Olhar preventivo","Inspecionar não é procurar culpados. É observar trabalho, ambiente, equipamentos, circulação, organização e controles. A inspeção deve combinar roteiro e escuta: muitas situações só aparecem quando quem executa a atividade explica dificuldades e improvisos."],["2. Categorias de perigos","Podem ser observados agentes físicos, químicos e biológicos, fatores ergonômicos, situações de acidentes e fatores psicossociais. A classificação ajuda a organizar, mas o mais importante é descrever fonte, circunstância e possíveis consequências."],["3. Mapa de riscos","O mapa é ferramenta participativa de comunicação. Ele não substitui avaliação técnica nem o inventário do PGR. Seu valor está em reunir percepções, localizar problemas e apoiar prioridades. Deve ser atualizado quando ambientes ou processos mudarem."],["4. Registro de inspeção","Um registro útil contém local, atividade, perigo, pessoas potencialmente expostas, controles existentes, evidências, recomendação, responsável pelo encaminhamento e prazo. Fotografias exigem autorização e não devem expor pessoas desnecessariamente."],["5. Priorização","Situações com potencial de dano grave, alta exposição ou ausência de controle exigem atenção imediata. Medidas provisórias podem ser necessárias até a solução definitiva. A prioridade deve ser justificada, não apenas intuitiva."]],"case":"Em um depósito, materiais pesados estão em prateleiras altas e caixas bloqueiam parte da passagem. A ação deve incluir reorganização, limites de armazenamento, acesso seguro, sinalização e rotina de verificação — não apenas retirar as caixas naquele dia.","check":["A inspeção inclui diferentes turnos e setores?","Os trabalhadores são ouvidos?","O risco está descrito com causa e consequência?","A prioridade está justificada?","A solução evita recorrência?"],"questions":["Quais riscos ficam invisíveis em uma inspeção rápida?","Como diferenciar correção provisória de definitiva?","Que critérios a unidade usará para priorizar?"],"refs":["NR-1 — identificação de perigos e avaliação de riscos.","NR-5 — participação da CIPA na prevenção."]},"6":{"objectives":["Aplicar princípios básicos de ergonomia.","Observar mobiliário, postura e organização do trabalho.","Propor melhorias coletivas e de baixo custo."],"sections":[["1. Ergonomia como adaptação do trabalho","A ergonomia busca adaptar as condições de trabalho às características das pessoas. Ela envolve mobiliário, equipamentos, levantamento de cargas, postura, iluminação, ruído, conforto e, sobretudo, organização do trabalho."],["2. Postos administrativos e docentes","Mesa, cadeira, monitor, teclado e materiais devem permitir postura estável e movimentos naturais. Alternar tarefas e posições é tão importante quanto ajustar mobiliário. Para docentes, deve-se observar tempo em pé, uso da voz, transporte de materiais e condições das salas."],["3. Cozinha, limpeza e manutenção","Alturas inadequadas, movimentos repetitivos, força excessiva, transporte manual e ferramentas impróprias aumentam o risco. Carrinhos, reorganização de armazenamento, utensílios adequados e divisão de cargas podem reduzir exposição."],["4. Organização do trabalho","Ritmo, pausas, clareza de tarefas, interrupções, demanda e autonomia influenciam a carga. A solução ergonômica não deve responsabilizar apenas a postura individual; deve considerar o sistema de trabalho."],["5. Avaliação e encaminhamento","A CIPA pode registrar sinais e demandas, propor ajustes simples e solicitar avaliação especializada quando necessário. Situações persistentes, complexas ou associadas a adoecimento requerem análise técnica e acompanhamento dos setores competentes."]],"case":"Servidores da secretaria alternam atendimento presencial, telefone e sistemas, mas o monitor está lateralizado e documentos ficam fora do alcance. Reorganizar o posto, reduzir torções, ajustar a cadeira e organizar pausas pode produzir melhora imediata, sem dispensar avaliação quando necessária.","check":["Monitores estão posicionados à frente e em altura adequada?","Há espaço para pernas e apoio estável?","Tarefas repetitivas possuem alternância?","Cargas são armazenadas em alturas seguras?","A organização do trabalho é discutida?"],"questions":["Que melhorias ergonômicas podem ser feitas sem grande investimento?","Como evitar que ergonomia vire apenas palestra de postura?","Quais atividades escolares exigem avaliação aprofundada?"],"refs":["NR-17 — Ergonomia, texto vigente.","Fundacentro — materiais de ergonomia e prevenção."]},"7":{"objectives":["Diferenciar EPI e EPC.","Reconhecer limites da proteção individual.","Acompanhar seleção, uso e conservação."],"sections":[["1. Proteção coletiva e individual","Equipamento de Proteção Coletiva protege várias pessoas ou controla o risco na fonte ou no ambiente. EPI é de uso individual. Guardas, exaustão, barreiras, corrimãos e sinalização podem ser exemplos de medidas coletivas; luvas, óculos e protetores são exemplos individuais, conforme o risco e a atividade."],["2. Hierarquia de prevenção","O EPI não deve ser a primeira resposta quando é possível eliminar ou controlar o perigo coletivamente. Ele complementa medidas e exige seleção adequada, fornecimento, orientação, ajuste, higienização, guarda e substituição."],["3. Adequação ao risco","Não existe EPI universal. A escolha depende da atividade, do agente, do tempo de exposição, das características do usuário e de requisitos técnicos. Uso inadequado pode criar falsa sensação de segurança."],["4. Rotina de controle","A unidade deve manter orientação, registros quando aplicáveis, disponibilidade e inspeção. O trabalhador deve utilizar corretamente, conservar e comunicar defeitos. A CIPA pode observar dificuldades de uso e propor melhorias."],["5. Exemplos escolares","Atividades de limpeza, manutenção, laboratório, cozinha e manuseio de resíduos podem exigir proteções específicas. A indicação deve vir de avaliação apropriada e dos setores competentes; o portal não prescreve equipamentos."]],"case":"Uma equipe usa luvas para manipular produto químico de limpeza, mas o modelo não foi escolhido conforme o produto. A comissão deve solicitar verificação da ficha de segurança, orientação técnica, condições de diluição, ventilação, armazenamento e seleção adequada — não apenas exigir “usar luva”.","check":["O risco foi controlado antes de recorrer ao EPI?","O equipamento é adequado à atividade?","Há orientação e reposição?","O usuário consegue usar corretamente?","Há inspeção dos EPCs e sinalizações?"],"questions":["Quando o EPI é insuficiente?","Quais barreiras dificultam o uso correto?","Como a CIPA pode identificar falsa sensação de segurança?"],"refs":["NR-6 — Equipamento de Proteção Individual.","NR-1 — hierarquia de medidas de prevenção."]},"8":{"objectives":["Agir com segurança diante de emergências.","Reconhecer limites do atendimento leigo.","Organizar acionamento e comunicação."],"sections":[["1. Prioridade: segurança da cena","Antes de ajudar, verifique se há perigo para você, para a vítima e para terceiros. Eletricidade, fogo, trânsito, produtos químicos, estruturas e violência podem exigir isolamento e apoio especializado. Não se deve criar uma segunda vítima."],["2. Acionamento","Identifique o serviço apropriado e informe local exato, natureza da ocorrência, número de vítimas, riscos presentes e telefone de contato. Delegue alguém para orientar a chegada do socorro. Siga as instruções do atendente."],["3. Avaliação inicial","Observe responsividade e respiração sem realizar procedimentos para os quais não há treinamento. Não ofereça medicamentos, alimentos ou líquidos. Evite movimentar a vítima, salvo risco iminente. Preserve privacidade e afaste curiosos."],["4. Situações frequentes","Quedas, cortes, queimaduras, engasgos, convulsões, desmaios e reações alérgicas exigem respostas específicas. Este módulo oferece princípios gerais; a prática deve ser conduzida por instrutor habilitado e seguir protocolos oficiais atualizados."],["5. Plano de emergência e registro","Contatos, responsabilidades, acesso de ambulância, kits, comunicação com família e registro devem estar previamente definidos. Após o evento, revise o que funcionou e o que precisa mudar."]],"case":"Uma pessoa desmaia em área cheia. Enquanto alguém aciona o serviço de emergência, outro servidor organiza espaço e ventilação, preserva a vítima e observa a respiração. Não se oferece água nem se força a pessoa a levantar.","check":["Os telefones de emergência estão visíveis?","A equipe conhece o endereço completo e acessos?","Kits são verificados periodicamente?","Há pessoas capacitadas por treinamento prático?","Ocorrências geram revisão do plano?"],"questions":["Quais riscos existem para quem tenta ajudar?","Como organizar papéis antes de uma emergência?","Que situações exigem treinamento prático presencial?"],"refs":["SAMU 192 e Corpo de Bombeiros 193 — orientações oficiais.","Lei nº 13.722/2018 — capacitação em noções básicas de primeiros socorros em estabelecimentos de ensino."]},"9":{"objectives":["Reconhecer elementos do plano de emergência.","Valorizar rotas, sinalização e simulados.","Evitar atuação improvisada em incêndios."],"sections":[["1. Prevenção","Prevenir incêndios envolve instalações elétricas adequadas, controle de materiais combustíveis, armazenamento correto, manutenção, ordem, limpeza e respeito às proibições. Pequenos sinais, como aquecimento, cheiro de queimado ou disjuntores recorrentes, devem ser comunicados."],["2. Detecção e alarme","A comunidade precisa reconhecer o alarme e saber como agir. O sistema deve ser audível, testado e associado a procedimentos claros. Informações confusas aumentam atraso e pânico."],["3. Rotas de fuga","Rotas devem permanecer desobstruídas, sinalizadas e iluminadas. Portas e acessos não podem ser bloqueados. O plano deve considerar pessoas com mobilidade reduzida e necessidades específicas."],["4. Extintores e combate inicial","Extintores variam conforme a classe de incêndio. Somente pessoas treinadas devem considerar combate inicial, com rota de saída garantida e sem exposição indevida. A prioridade é alertar, evacuar e acionar o Corpo de Bombeiros."],["5. Simulados","Simulados testam tempo, comunicação, pontos de encontro, contagem de pessoas e acessibilidade. Devem ser planejados, comunicados e avaliados. O objetivo é aprender, não surpreender ou gerar medo."]],"case":"Durante um simulado, uma turma retorna para buscar objetos e outra usa saída não prevista. A avaliação deve revisar comunicação, liderança, sinalização, comportamento esperado e adequação das rotas.","check":["Rotas e saídas estão livres?","A sinalização é visível?","Há ponto de encontro definido?","A contagem de pessoas está prevista?","O simulado inclui acessibilidade e avaliação?"],"questions":["Quais comportamentos podem comprometer uma evacuação?","Como avaliar um simulado sem culpabilizar?","Quem deve atualizar o plano quando o prédio muda?"],"refs":["NR-23 — Proteção Contra Incêndios.","Instruções Técnicas do Corpo de Bombeiros do Estado de São Paulo, conforme aplicáveis."]},"10":{"objectives":["Identificar fatores psicossociais relacionados ao trabalho.","Propor medidas organizacionais e coletivas.","Preservar sigilo e evitar diagnósticos indevidos."],"sections":[["1. Conceito preventivo","Fatores de riscos psicossociais relacionados ao trabalho resultam da forma como tarefas, demandas, relações, autonomia, apoio, reconhecimento e mudanças são organizados. O foco da prevenção é o trabalho, não a avaliação clínica individual."],["2. Exemplos","Demandas incompatíveis com recursos, falta de clareza, conflitos persistentes, violência, assédio, baixa participação, jornadas extensas, comunicação hostil e ausência de apoio podem contribuir para sofrimento e adoecimento."],["3. Escuta segura","A escuta deve ser respeitosa e preservar confidencialidade. A CIPA não investiga clinicamente nem promete sigilo absoluto quando há dever de encaminhamento. Relatos individuais podem sinalizar problemas coletivos, mas não devem ser expostos em atas abertas."],["4. Medidas coletivas","Revisão de fluxos, prioridades, dimensionamento, distribuição de tarefas, canais de comunicação, apoio da liderança, prevenção da violência e participação são exemplos. Ações de bem-estar podem complementar, mas não substituir mudanças na organização do trabalho."],["5. Monitoramento","Indicadores podem incluir afastamentos agregados, rotatividade, conflitos, horas extras, reclamações, incidentes de violência e pesquisas anônimas, sempre com proteção de dados e interpretação responsável."]],"case":"Uma escola promove palestra de autocuidado, mas mantém mensagens urgentes fora do horário e prioridades contraditórias. O plano preventivo precisa atuar sobre organização, comunicação e limites, além de oferecer apoio.","check":["A análise considera condições de trabalho?","Há canais seguros de escuta?","Dados são tratados de forma agregada?","Medidas coletivas têm prioridade?","Casos individuais são encaminhados adequadamente?"],"questions":["Como diferenciar fator de risco e diagnóstico?","Que práticas de gestão reduzem riscos psicossociais?","Como registrar sem expor pessoas?"],"refs":["NR-1 — GRO e fatores de riscos psicossociais relacionados ao trabalho.","Manual GRO/PGR da NR-1 — MTE, 2026."]},"11":{"objectives":["Distinguir prevenção, acolhimento e apuração.","Reconhecer comportamentos inadequados.","Fortalecer canais e proteção contra retaliação."],"sections":[["1. Prevenção do assédio e da violência","A prevenção exige regras claras, formação periódica, canais confiáveis, proteção contra retaliação e resposta coerente. O tema deve fazer parte das práticas da CIPA, conforme a legislação aplicável, sem transformar a comissão em órgão disciplinar ou investigativo."],["2. Assédio moral","Em termos educativos, assédio moral envolve condutas abusivas que degradam o ambiente e atingem dignidade, integridade ou condições de trabalho, muitas vezes de forma repetida ou sistemática. Conflito pontual, cobrança legítima e decisão de gestão não são automaticamente assédio, mas podem ser inadequados conforme contexto e forma."],["3. Assédio sexual e outras violências","Assédio sexual possui definição jurídica própria e pode constituir crime. Comentários, propostas, contatos, exposição, chantagem ou ambiente sexualizado podem exigir encaminhamento imediato. A vítima não deve ser culpabilizada nem forçada a confrontar a pessoa denunciada."],["4. Acolhimento responsável","Ouvir sem julgamento, registrar apenas o necessário, explicar limites e canais, perguntar sobre segurança imediata e encaminhar são práticas essenciais. Não prometer resultado, não divulgar nomes e não conduzir investigação informal."],["5. Cultura preventiva","A prevenção inclui comunicação respeitosa, critérios transparentes, liderança responsável, educação sobre diversidade e resposta a comportamentos inadequados antes que se agravem."]],"case":"Uma servidora relata comentários constrangedores e pede que “ninguém saiba”. O acolhimento deve preservar sua privacidade, explicar canais e limites, avaliar segurança e orientar opções, sem interrogatório, confronto ou circulação informal da informação.","check":["Os canais de denúncia são conhecidos?","Há orientação sobre não retaliação?","A CIPA sabe seus limites?","Atas evitam dados identificáveis?","Ações educativas ocorrem periodicamente?"],"questions":["Como acolher sem investigar?","Que medidas reduzem medo de retaliação?","Como trabalhar prevenção sem expor casos?"],"refs":["Lei nº 14.457/2022, art. 23.","Código Penal, art. 216-A, quando aplicável.","Normas e canais administrativos competentes."]},"12":{"objectives":["Elaborar plano de ação objetivo.","Definir evidências, responsáveis e prazos.","Avaliar eficácia e promover melhoria contínua."],"sections":[["1. Do diagnóstico à prioridade","O plano começa por um problema claramente descrito. Evite ações vagas como “conscientizar”. Registre situação, causa provável, pessoas expostas, controles existentes e consequência possível. Priorize gravidade, exposição, urgência e viabilidade sem adiar riscos críticos."],["2. Estrutura 5W2H","Uma ação pode responder: o que será feito, por que, onde, quando, por quem, como e com quais recursos. O portal já registra unidade, ação, responsável, prazo e status; o detalhamento pode ser complementado por documentos e evidências."],["3. Metas e indicadores","Meta descreve resultado esperado. Indicador ajuda a acompanhar. Para rota obstruída, a meta pode ser manter 100% das verificações semanais sem obstrução. Para formação, pode-se medir participação e aplicação prática, não apenas presença."],["4. Evidências","Fotos autorizadas, ordens de serviço, listas de verificação, atas, registros de treinamento e relatórios podem demonstrar execução. Evidência não é o mesmo que eficácia: uma placa instalada pode não resolver o risco se continuar invisível ou ignorada."],["5. Monitoramento e encerramento","Cada reunião deve revisar ações vencidas, bloqueios e resultados. A ação só é encerrada quando a medida foi implementada e verificada. Se não funcionar, deve ser revisada, não apenas marcada como concluída."]],"case":"A ação “orientar para não bloquear a saída” foi concluída com um aviso, mas a saída volta a ser obstruída. A avaliação mostra que faltam local de armazenamento, rotina de inspeção e responsabilização. O plano precisa ser reformulado.","check":["O problema está descrito de forma concreta?","A ação atua sobre a causa?","Há responsável e prazo realistas?","A evidência comprova execução?","A eficácia foi verificada?"],"questions":["Qual a diferença entre atividade e resultado?","Como tratar ações que dependem de outro setor?","Quando uma ação deve ser reaberta?"],"refs":["NR-1 — plano de ação do PGR.","NR-5 — acompanhamento de medidas preventivas."]}};
 
 let MODULOS_DATA = {}; // { n: {materiais:[]} }
 
@@ -603,8 +783,10 @@ async function renderModulos(){
         </div>
         ${progressRing(pct)}
       </div>
+      <div class="module-summary"><h5>Conteúdo programático</h5><ul>${(CONTEUDO_PROGRAMATICO[m.n]||[]).map(i=>`<li>${i}</li>`).join('')}</ul></div>
       <div class="module-actions">
-        <button class="btn btn-outline btn-sm toggle-mat" data-n="${m.n}">Ver materiais (${data.materiais.length})</button>
+        <button class="btn btn-primary btn-sm open-training" data-n="${m.n}">Abrir apostila</button>
+        <button class="btn btn-outline btn-sm toggle-mat" data-n="${m.n}">Materiais complementares (${data.materiais.length})</button>
         <button class="btn btn-green btn-sm add-mat" data-n="${m.n}">${ICONS.plus} Adicionar</button>
       </div>
       <div class="module-materials" id="mat-${m.n}">
@@ -622,6 +804,8 @@ async function renderModulos(){
     `;
     grid.appendChild(card);
   }
+
+  grid.querySelectorAll('.open-training').forEach(b=>b.onclick = ()=>abrirApostila(Number(b.dataset.n)));
 
   grid.querySelectorAll('.toggle-mat').forEach(b=>b.onclick = ()=>{
     const n = b.dataset.n;
@@ -669,12 +853,51 @@ function renderMaterialList(n){
   `).join('');
 }
 
+
+let currentTrainingModule = 1;
+function escapeHtml(value){return String(value??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+function renderApostila(n){
+  const m=MODULOS_BASE.find(x=>x.n===n), d=MATERIAL_FORMACAO[n];
+  if(!m||!d)return;
+  const sec=d.sections.map(([title,text])=>`<section class="training-section"><h2>${title}</h2><p>${text}</p></section>`).join('');
+  document.getElementById('trainingContent').innerHTML=`
+    <header class="training-cover"><div class="training-kicker">Programa de Formação Continuada</div><h1>${m.titulo}</h1><p>Coleção CIPA URE São Bernardo do Campo — material independente de apoio a estudos, reuniões e práticas preventivas.</p><span class="volume">Módulo ${String(n).padStart(2,'0')} de 12</span></header>
+    <div class="training-body">
+      <div class="training-disclaimer"><b>Natureza do material:</b> publicação educativa disponibilizada pela CIPA URE São Bernardo do Campo. Não constitui curso oficial da Secretaria da Educação do Estado de São Paulo, não substitui normas, atos administrativos, avaliações técnicas, atendimento de emergência ou orientação dos órgãos competentes.</div>
+      <section class="training-section"><h2>Objetivos de aprendizagem</h2><div class="training-objectives">${d.objectives.map(x=>`<div class="objective-card">${x}</div>`).join('')}</div></section>
+      ${sec}
+      <section class="training-section"><h2>Aplicação prática — estudo de caso</h2><div class="training-callout green"><b>Situação para análise:</b> ${d.case}</div></section>
+      <section class="training-section"><h2>Checklist para a CIPA</h2><ul class="checklist">${d.check.map(x=>`<li>${x}</li>`).join('')}</ul></section>
+      <section class="training-section"><h2>Questões para discussão na reunião</h2><ol class="training-questions">${d.questions.map(x=>`<li>${x}</li>`).join('')}</ol></section>
+      <section class="training-section"><h2>Referências essenciais</h2><ul>${d.refs.map(x=>`<li class="training-ref">${x}</li>`).join('')}</ul><div class="training-callout amber"><b>Consulta recomendada:</b> verifique sempre a versão vigente nos portais oficiais do Ministério do Trabalho e Emprego, do Planalto e dos órgãos administrativos competentes.</div></section>
+      <div class="training-footer-note">Programa de Formação Continuada — CIPA URE São Bernardo do Campo · Material independente para fins educativos · Edição 2026.</div>
+    </div>`;
+  document.getElementById('trainingPrev').disabled=n<=1;
+  document.getElementById('trainingNext').disabled=n>=MODULOS_BASE.length;
+}
+function abrirApostila(n){currentTrainingModule=n;renderApostila(n);const modal=document.getElementById('trainingModal');modal.classList.add('open');modal.setAttribute('aria-hidden','false');modal.scrollTop=0;document.body.style.overflow='hidden';}
+function fecharApostila(){const modal=document.getElementById('trainingModal');modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+document.getElementById('trainingClose').onclick=fecharApostila;
+document.getElementById('trainingPrev').onclick=()=>{if(currentTrainingModule>1){currentTrainingModule--;renderApostila(currentTrainingModule);document.getElementById('trainingModal').scrollTop=0;}};
+document.getElementById('trainingNext').onclick=()=>{if(currentTrainingModule<MODULOS_BASE.length){currentTrainingModule++;renderApostila(currentTrainingModule);document.getElementById('trainingModal').scrollTop=0;}};
+document.getElementById('trainingPrint').onclick=()=>{document.body.classList.add('printing-module');window.print();setTimeout(()=>document.body.classList.remove('printing-module'),400);};
+document.getElementById('trainingModal').addEventListener('click',e=>{if(e.target.id==='trainingModal')fecharApostila();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('trainingModal').classList.contains('open'))fecharApostila();});
+
 /* ---------------- COMPOSIÇÃO DA CIPA (CIPEIROS) ---------------- */
 let CIPEIROS = [];
 const REPRESENTACAO_LABEL = {empregador:'Empregador', empregados:'Empregados'};
 
 function renderCipeiros(){
   const tbody = document.getElementById('cipeirosTbody');
+  const emp = CIPEIROS.filter(c=>c.representacao==='empregador').length;
+  const trab = CIPEIROS.filter(c=>c.representacao==='empregados').length;
+  document.getElementById('parityEmp').textContent = emp;
+  document.getElementById('parityTrab').textContent = trab;
+  const status = document.getElementById('parityStatus');
+  if(emp===0 && trab===0){ status.textContent='Aguardando cadastro'; }
+  else if(emp===trab){ status.textContent='Quantitativos equilibrados'; }
+  else { status.textContent='Verificar composição'; toast('Atenção: a representação cadastrada apresenta diferença numérica. Verifique titulares, suplentes, vacâncias e a norma aplicável.'); }
   if(!CIPEIROS.length){
     tbody.innerHTML = '<tr><td colspan="4" class="empty-hint" style="padding:16px;">Nenhum cipeiro cadastrado ainda.</td></tr>';
     return;
@@ -717,7 +940,7 @@ document.getElementById('salvarCipeiro').onclick = async ()=>{
 
 /* ---------------- BIBLIOTECA DE DOCUMENTOS ---------------- */
 let DOCS = [];
-const CATEGORIAS = ['Todos','Segurança do Trabalho','Saúde Ocupacional','Ergonomia','Emergência e Evacuação','Assédio e Convivência','Outros'];
+const CATEGORIAS = ['Todos','NR-1','NR-5','GRO','PGR','SIPAT','Segurança do Trabalho','Saúde Ocupacional','Ergonomia','Emergência e Evacuação','Assédio e Convivência','Outros'];
 let filtroAtual = 'Todos';
 
 function renderFiltros(){
@@ -783,8 +1006,8 @@ document.getElementById('salvarDoc').onclick = async ()=>{
 
 /* ---------------- LEGISLAÇÃO ---------------- */
 const LEGISLACAO = [
-  {tag:'NR-1', titulo:'Disposições Gerais e Gerenciamento de Riscos Ocupacionais', texto:'Norma-base do sistema de SST: define o Gerenciamento de Riscos Ocupacionais (GRO) e o Programa de Gerenciamento de Riscos (PGR), com participação obrigatória da CIPA na identificação e no acompanhamento dos riscos — incluindo, desde maio de 2026, os riscos psicossociais (sobrecarga, assédio, pressão excessiva).'},
-  {tag:'NR-5', titulo:'Comissão Interna de Prevenção de Acidentes e Assédio', texto:'Define a obrigatoriedade, composição paritária, atribuições e funcionamento da CIPA nas organizações, incluindo o mapeamento de riscos e a promoção de ações preventivas.'},
+  {tag:'NR-1', titulo:'Disposições Gerais e Gerenciamento de Riscos Ocupacionais', texto:'Norma-base do sistema de SST: define o Gerenciamento de Riscos Ocupacionais (GRO) e o Programa de Gerenciamento de Riscos (PGR), com participação dos trabalhadores e integração às ações preventivas. Desde 26 de maio de 2026, o GRO deve abranger também fatores de riscos psicossociais relacionados ao trabalho.'},
+  {tag:'NR-5', titulo:'Comissão Interna de Prevenção de Acidentes e de Assédio', texto:'Define a obrigatoriedade, composição paritária, atribuições e funcionamento da CIPA nas organizações, incluindo o mapeamento de riscos e a promoção de ações preventivas.'},
   {tag:'NR-6', titulo:'Equipamento de Proteção Individual', texto:'Estabelece critérios para fornecimento, uso, guarda e conservação de EPIs adequados às atividades exercidas em cada função.'},
   {tag:'NR-9', titulo:'Avaliação e Controle das Exposições Ocupacionais', texto:'Trata da identificação de agentes físicos, químicos e biológicos e das medidas de controle a serem adotadas pelo empregador.'},
   {tag:'NR-17', titulo:'Ergonomia', texto:'Orienta a adaptação das condições de trabalho às características do trabalhador, abrangendo mobiliário, ritmo e organização das tarefas.'},
@@ -802,6 +1025,51 @@ function renderLegislacao(){
     </div>
   `).join('');
 }
+
+/* ---------------- QUIZ E CERTIFICADO ---------------- */
+const QUIZ_CIPA = [
+ {pergunta:'Qual Norma Regulamentadora trata da CIPA?',alternativas:['NR-1','NR-5','NR-6','NR-17'],correta:1,explicacao:'A NR-5 estabelece parâmetros para organização e funcionamento da CIPA.'},
+ {pergunta:'O que significa GRO?',alternativas:['Gestão de Rotinas Organizacionais','Gerenciamento de Riscos Ocupacionais','Grupo de Resposta Operacional','Guia de Riscos Ocupacionais'],correta:1,explicacao:'GRO significa Gerenciamento de Riscos Ocupacionais.'},
+ {pergunta:'O que significa PGR?',alternativas:['Plano Geral de Resposta','Programa de Gerenciamento de Riscos','Programa de Gestão Regional','Protocolo Geral de Riscos'],correta:1,explicacao:'PGR significa Programa de Gerenciamento de Riscos.'},
+ {pergunta:'Qual é o objetivo central da CIPA?',alternativas:['Aplicar penalidades','Substituir o serviço médico','Prevenir acidentes, doenças relacionadas ao trabalho e assédio','Autorizar obras escolares'],correta:2,explicacao:'A CIPA atua preventivamente na promoção da segurança, saúde e prevenção do assédio.'},
+ {pergunta:'O que caracteriza uma representação equilibrada?',alternativas:['Somente gestores','Somente trabalhadores','Participação de representantes da organização e dos trabalhadores conforme as regras aplicáveis','Apenas membros voluntários'],correta:2,explicacao:'A participação de ambos os lados fortalece a prevenção e a escuta do ambiente de trabalho.'},
+ {pergunta:'Qual documento integra o PGR?',alternativas:['Inventário de riscos e plano de ação','Somente ata de reunião','Somente lista de presença','Calendário escolar'],correta:0,explicacao:'O PGR é composto, de forma central, pelo inventário de riscos e pelo plano de ação.'},
+ {pergunta:'Qual medida deve ser priorizada na hierarquia de controles?',alternativas:['Apenas uso de EPI','Eliminar ou reduzir o risco na fonte e adotar medidas coletivas','Somente advertir o trabalhador','Transferir a responsabilidade'],correta:1,explicacao:'A prevenção prioriza eliminação e redução do risco, seguida de medidas coletivas e administrativas antes da proteção individual.'},
+ {pergunta:'O que a CIPA pode fazer nas reuniões?',alternativas:['Registrar problemas sem encaminhamento','Analisar situações, definir encaminhamentos e acompanhar ações','Substituir todos os setores técnicos','Divulgar dados pessoais'],correta:1,explicacao:'As reuniões devem produzir registros, encaminhamentos e acompanhamento.'},
+ {pergunta:'A SIPAT tem finalidade principalmente:',alternativas:['Eleitoral','Arrecadatória','Educativa e preventiva','Disciplinar'],correta:2,explicacao:'A SIPAT promove conscientização e prevenção de acidentes e adoecimentos.'},
+ {pergunta:'Na prevenção do assédio, a CIPA deve:',alternativas:['Investigar e julgar sozinha','Ignorar relatos informais','Apoiar ações educativas, orientar canais e respeitar sigilo e competências','Publicar nomes dos envolvidos'],correta:2,explicacao:'A atuação deve ser preventiva, educativa e articulada aos canais institucionais competentes.'},
+ {pergunta:'Fatores de riscos psicossociais estão relacionados principalmente a:',alternativas:['Somente personalidade individual','Organização e gestão do trabalho, demandas e relações laborais','Somente condições climáticas','Apenas doenças diagnosticadas'],correta:1,explicacao:'A NR-1 vigente considera fatores psicossociais relacionados ao trabalho no GRO.'},
+ {pergunta:'O ciclo de gestão da CIPA apresentado no portal é:',alternativas:['Planejar, executar, monitorar e avaliar','Comprar, distribuir, fiscalizar e punir','Eleger, multar, suspender e arquivar','Anotar, esquecer, repetir e encerrar'],correta:0,explicacao:'O ciclo proposto favorece planejamento, execução, monitoramento e melhoria contínua.'}
+];
+let ULTIMA_NOTA = 0;
+function renderQuiz(){
+ const form=document.getElementById('quizForm'); if(!form) return;
+ form.innerHTML=QUIZ_CIPA.map((q,i)=>`<div class="card quiz-question"><h4>${i+1}. ${q.pergunta}</h4>${q.alternativas.map((a,j)=>`<label class="quiz-option"><input type="radio" name="q${i}" value="${j}"><span>${a}</span></label>`).join('')}<div id="exp-${i}" style="display:none;margin-top:10px;font-size:12px;color:var(--ink-soft);"></div></div>`).join('');
+}
+document.getElementById('corrigirQuiz').onclick=()=>{
+ let acertos=0, respondidas=0;
+ QUIZ_CIPA.forEach((q,i)=>{const marcada=document.querySelector(`input[name="q${i}"]:checked`);const exp=document.getElementById(`exp-${i}`);if(marcada){respondidas++;if(Number(marcada.value)===q.correta)acertos++;}exp.style.display='block';exp.textContent=q.explicacao;});
+ if(respondidas<QUIZ_CIPA.length){toast(`Responda todas as ${QUIZ_CIPA.length} questões.`);return;}
+ ULTIMA_NOTA=Math.round(acertos/QUIZ_CIPA.length*100);
+ document.getElementById('quizScore').textContent=`Aproveitamento: ${ULTIMA_NOTA}%`;
+ const aprovado=ULTIMA_NOTA>=70;
+ document.getElementById('quizStatus').textContent=aprovado?'✅ Certificação Concluída':'📘 Revisão Recomendada';
+ document.getElementById('quizFeedback').textContent=aprovado?`Você acertou ${acertos} de ${QUIZ_CIPA.length} questões. Preencha seu nome para emitir o certificado.`:`Você acertou ${acertos} de ${QUIZ_CIPA.length} questões. Revise os conteúdos e refaça a avaliação para alcançar 70%.`;
+ document.getElementById('certArea').style.display=aprovado?'block':'none';
+ document.getElementById('quizResult').classList.add('show');
+ document.getElementById('quizResult').scrollIntoView({behavior:'smooth',block:'center'});
+};
+document.getElementById('emitirCertificado').onclick=()=>{
+ const nome=document.getElementById('certNome').value.trim();
+ if(!nome){toast('Informe o nome completo do participante.');return;}
+ if(ULTIMA_NOTA<70){toast('Aproveitamento mínimo não alcançado.');return;}
+ const data=new Date().toLocaleDateString('pt-BR');
+ const codigo='CIPA-'+Date.now().toString(36).toUpperCase();
+ const w=window.open('','_blank');
+ if(!w){toast('Permita pop-ups para emitir o certificado.');return;}
+ w.document.write(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Certificado CIPA</title><style>@page{size:A4 landscape;margin:12mm}body{font-family:Arial,sans-serif;margin:0;color:#17324d}.cert{border:10px double #0B3D66;min-height:170mm;padding:20mm;text-align:center;box-sizing:border-box}.tag{letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:#1B8A5A}.title{font-size:40px;margin:18px 0 10px}.name{font-size:30px;font-weight:bold;border-bottom:1px solid #aaa;display:inline-block;padding:6px 35px}.text{font-size:16px;line-height:1.8;max-width:900px;margin:18px auto}.meta{display:flex;justify-content:center;gap:50px;margin-top:26px;font-size:14px}.foot{margin-top:25px;font-size:10px;color:#666}.print{margin-top:18px}@media print{.print{display:none}}</style></head><body><div class="cert"><div class="tag">${CONFIG.ureNome}</div><div class="title">Certificado de Conclusão</div><p>Certificamos que</p><div class="name">${nome.replace(/[<>&]/g,'')}</div><div class="text">concluiu a <b>Formação Introdutória em CIPA — Comissão Interna de Prevenção de Acidentes e de Assédio</b>, com aproveitamento de <b>${ULTIMA_NOTA}%</b>.</div><div class="meta"><span>Data: ${data}</span><span>Código: ${codigo}</span></div><div class="foot">Documento emitido pelo Portal CIPA da ${CONFIG.ureNome} para registro da participação na atividade formativa. Sua validade institucional depende das normas e dos atos administrativos aplicáveis.</div><button class="print" onclick="window.print()">Imprimir / Salvar como PDF</button></div></body></html>`);
+ w.document.close();
+};
 
 /* ---------------- PLANO DE AÇÃO ---------------- */
 let PLANOS = [];
@@ -875,7 +1143,7 @@ document.getElementById('salvarPlano').onclick = async ()=>{
 /* ---------------- INICIALIZAÇÃO ---------------- */
 function aplicarConfig(){
   document.getElementById('brandUre').textContent = CONFIG.ureNome;
-  document.getElementById('sidebarFoot').textContent = 'SEDUC-SP · Comissão Interna de Prevenção de Acidentes e Assédio';
+  document.getElementById('sidebarFoot').textContent = 'SEDUC-SP · Comissão Interna de Prevenção de Acidentes e de Assédio';
   document.getElementById('footUre').textContent = CONFIG.ureSigla;
   document.getElementById('heroMunicipios').textContent = 'Atende as unidades escolares de: ' + CONFIG.municipios.join(' e ') + '.';
 
@@ -896,6 +1164,7 @@ function aplicarConfig(){
   renderFiltrosMunicipio();
   renderPlanos();
   renderCipeiros();
+  renderQuiz();
 })();
 </script>
 </body>
